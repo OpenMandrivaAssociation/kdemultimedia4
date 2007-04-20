@@ -129,7 +129,6 @@ Common files for kdemultimedia
 %files common
 %defattr(-,root,root)
 %_sysconfdir/xdg/menus/applications-merged/kde-multimedia-music.menu
-%_libdir/kde4/kfile_*.so
 %_libdir/kde4/kcm_audiocd.*
 %_libdir/kde4/kio_audiocd.*
 %_datadir/apps/konqueror/servicemenus/audiocd_play.desktop
@@ -137,17 +136,16 @@ Common files for kdemultimedia
 %_datadir/desktop-directories/kde-multimedia-music.directory
 %_datadir/apps/kconf_update/audiocd.upd
 %_datadir/apps/kconf_update/upgrade-metadata.sh
-%_datadir/services/audiocd.desktop
-%_datadir/services/audiocd.protocol
-%_datadir/services/kfile_*
+%_datadir/kde4/services/audiocd.desktop
+%_datadir/kde4/services/audiocd.protocol
 %_libdir/kde4/libaudiocd_*
 %_datadir/apps/kappfinder/apps/Multimedia/*.desktop
 %_datadir/config.kcfg/audiocd_lame_encoder.kcfg
 %_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
 %_libdir/kde4/phonon_xine.so
 %_datadir/icons/crystalsvg/22x22/actions/cdsmall.png
-%_datadir/services/phononbackends/xine.desktop
-%_datadir/services/kcm_phononxine.desktop
+%_datadir/kde4/services/phononbackends/xine.desktop
+%_datadir/kde4/services/kcm_phononxine.desktop
 %_iconsdir/crystalsvg/128x128/apps/xinelogo.png
 
 #-------------------------------------------------------------------------
@@ -272,7 +270,7 @@ The audio mixer as a standalone program and Kicker applet
 %_libdir/kde4/kmix*.so
 %_datadir/autostart/restore_kmix_volumes.desktop
 %_iconsdir/*/*/*/kmix*
-%_datadir/services/kmixctrl_restore.desktop
+%_datadir/kde4/services/kmixctrl_restore.desktop
 %_datadir/applications/kde4/kmix.desktop
 %dir %_datadir/apps/kmix/
 %_datadir/apps/kmix/*
@@ -339,14 +337,13 @@ A CD player with an interface to the internet CDDB database
 %_iconsdir/*/*/*/kscd*
 %_datadir/config.kcfg/kscd.kcfg
 %_datadir/config.kcfg/libkcddb.kcfg
-%_datadir/services/libkcddb.desktop
+%_datadir/kde4/services/libkcddb.desktop
 %_datadir/applications/kde4/kscd.desktop
 #%dir %_datadir/apps/kscd/
 #%_datadir/apps/kscd/*
 %_datadir/apps/profiles/kscd.profile.xml
 %_datadir/apps/kconf_update/kcmcddb-emailsettings.upd
 %_libdir/kde4/kcm_cddb.*
-%_datadir/mimelnk/text/xmcd.desktop
 %doc %_docdir/HTML/en/kscd/*.bz2
 %doc %_docdir/HTML/en/kscd/*.docbook
 %doc %_docdir/HTML/en/kscd/*.png
@@ -382,9 +379,9 @@ Kmid program
 %_libdir/kde4/libkmidpart.*
 %dir %_datadir/apps/kmid/
 %_datadir/apps/kmid/*
-%_datadir/mimelnk/audio/x-karaoke.desktop
-%_datadir/servicetypes/audiomidi.desktop
+%_datadir/kde4/servicetypes/audiomidi.desktop
 %_datadir/applications/kde4/kmid.desktop
+%_datadir/mimelnk/audio/x-karaoke.desktop
 %doc %_docdir/HTML/en/kmid/*.bz2
 %doc %_docdir/HTML/en/kmid/*.docbook
 
@@ -462,12 +459,11 @@ it's plugin interface
 %_datadir/apps/noatun/*
 %_iconsdir/*/*/*/noatun*
 %_datadir/applications/kde4/noatun.desktop
-#%_datadir/mimelnk/interface/x-winamp-skin.desktop
 %doc %_docdir/HTML/en/noatun/*.bz2
 %doc %_docdir/HTML/en/noatun/*.docbook
-%_datadir/services/noatun/noatun_milkchocolate.desktop
-%_datadir/services/noatun/noatun_splitplaylist.desktop
-%_datadir/servicetypes/noatunplugin.desktop
+%_datadir/kde4/services/noatun/noatun_milkchocolate.desktop
+%_datadir/kde4/services/noatun/noatun_splitplaylist.desktop
+%_datadir/kde4/servicetypes/noatunplugin.desktop
 
 #-------------------------------------------------------------------------
 
@@ -572,6 +568,5 @@ install -m 0644 %SOURCE2 %buildroot/%_datadir/config/jukrc
 
 %clean
 rm -fr %buildroot
-
 
 
