@@ -78,6 +78,7 @@ BuildRequires:	akode-devel
 BuildRequires: kdebase4-devel
 BuildRequires:  libfreebob-devel
 BuildRequires: alsa-lib-devel
+BuildRequires: libgstreamer-plugins-base-devel
 
 BuildRoot:	%_tmppath/%name-%version-%release-root
 # Don't add kdemultimedia-arts package on meta provides
