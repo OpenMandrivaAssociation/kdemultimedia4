@@ -43,7 +43,7 @@
 Name:		kdemultimedia4
 Summary:	K Desktop Environment - Multimedia
 Version: 	3.80.3
-Release: 	%mkrel 0.%branch_date.1
+Release: 	%mkrel 0.%branch_date.2
 Epoch: 1
 Group:		Graphical desktop/KDE
 License:	GPL
