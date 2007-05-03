@@ -144,10 +144,12 @@ Common files for kdemultimedia
 %_datadir/config.kcfg/audiocd_lame_encoder.kcfg
 %_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
 %_libdir/kde4/phonon_xine.so
-%_datadir/icons/crystalsvg/22x22/actions/cdsmall.png
 %_datadir/kde4/services/phononbackends/xine.desktop
 %_datadir/kde4/services/kcm_phononxine.desktop
-%_iconsdir/crystalsvg/128x128/apps/xinelogo.png
+
+%_iconsdir/oxygen/128x128/apps/xinelogo.png
+%_iconsdir/oxygen/22x22/actions/cdsmall.png
+
 
 #-------------------------------------------------------------------------
 
@@ -171,7 +173,6 @@ Header files needed for developing kdemultimedia applications.
 %_libdir/libkcddb.so
 %_libdir/libkmidlib.so
 %_libdir/liblibkmid.so
-%_libdir/libphononxineengine.so
 %_libdir/libkcompactdisc.so
 %exclude %_includedir/noatun
 %_datadir/dbus-1/interfaces/org.kde.KMid.xml
@@ -198,7 +199,6 @@ Libraries files needed for developing kdemultimedia applications.
 %_libdir/libaudiocdplugins.so.*
 %_libdir/libkcompactdisc.so.*
 %_libdir/liblibkmid.so.*
-%_libdir/libphononxineengine.so.*
 %_libdir/kde4/kcm_phononxine.so
 #-------------------------------------------------------------------------
 
