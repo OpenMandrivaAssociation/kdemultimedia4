@@ -1,17 +1,6 @@
 %define _requires_exceptions devel\(libnoatunarts\)\\|libnoatunarts.so\\|devel\(libnoatunarts\(.*\)\\|libwinskinvis.so\\|libartseffects.so\\|libmpeg-0.3.0.so\\|libyafcore.so\\|libyafxplayer.so\\|devel\(libartsbuilder\)
 
-# remove it when kde4 will be official kde package
-%define _prefix /opt/kde4/
-%define _libdir %_prefix/%_lib
-%define _datadir %_prefix/share/
-%define _bindir %_prefix/bin
-%define _includedir %_prefix/include/
-%define _iconsdir %_datadir/icons/
-%define _sysconfdir %_prefix/etc/
-%define _docdir %_datadir/doc/
-
-%define branch_date 20070502
-
+%define revision 682818
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -35,61 +24,50 @@
 %define dont_strip 1
 %endif
 
-
 %define lib_name_orig lib%{name}
 %define lib_major 1
 %define lib_name %mklibname %{name} %{lib_major}
 
 Name:		kdemultimedia4
 Summary:	K Desktop Environment - Multimedia
-Version: 	3.80.3
-Release: 	%mkrel 0.%branch_date.2
+Version: 	3.91
+Release: 	%mkrel 0.%revision.2
 Epoch: 1
 Group:		Graphical desktop/KDE
 License:	GPL
-Packager:       Mandriva Linux KDE Team <kde@mandriva.com>
 URL: 		http://www.kde.org
 %if %branch
-Source:         ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version-%branch_date.tar.bz2
+Source:         ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%revision.tar.bz2
 %else
 Source:         ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Source2:	kdemultimedia-3.3.2-add-multimedia-shortcuts-jukrc
-
-%define mini_release %mkrel 0.%branch_date.1
-BuildRequires: kdelibs4-devel >= %version-%mini_release
-
-BuildRequires: cdparanoia 
-BuildRequires: musicbrainz-devel
-BuildRequires: mad-devel 
-BuildRequires: oggvorbis-devel
-BuildRequires: libxine-devel 
-#BuildRequires: libtaglib-devel >= 0.96 
-#BuildRequires: libflac++-devel
-BuildRequires: libtunepimp-devel 
-BuildRequires: libtheora-devel
+BuildRequires:  kdelibs4-devel
+BuildRequires:  cdparanoia 
+BuildRequires:  musicbrainz-devel
+BuildRequires:  mad-devel 
+BuildRequires:  oggvorbis-devel
+BuildRequires:  libxine-devel 
+BuildRequires:  libtunepimp-devel 
+BuildRequires:  libtheora-devel
 BuildRequires:	libcdda-devel
-#BuildRequires: libflac++-devel
-#BuildRequires: liboggflac++-devel
-BuildRequires: libspeex-devel
-BuildRequires: libsamplerate-devel
-BuildRequires: X11-devel
+BuildRequires:  libspeex-devel
+BuildRequires:  libsamplerate-devel
+BuildRequires:  X11-devel
 BuildRequires:	akode-devel
-BuildRequires: kdebase4-devel
+BuildRequires:  kdebase4-devel
 BuildRequires:  libfreebob-devel
-BuildRequires: alsa-lib-devel
-BuildRequires: libgstreamer-plugins-base-devel
+BuildRequires:  alsa-lib-devel
+BuildRequires:  libgstreamer-plugins-base-devel
 
 BuildRoot:	%_tmppath/%name-%version-%release-root
-# Don't add kdemultimedia-arts package on meta provides
-# This package have offensive mcop files and is usefull just
-# if you want develop new synthesizer objects with artsbuilder 
-Requires: %name-common = %epoch:%version-%release
-Requires: %name-kmix = %epoch:%version-%release
-Requires: %name-kmid = %epoch:%version-%release
-Requires: %name-kaudiocreator = %epoch:%version-%release
-Requires: %name-kscd = %epoch:%version-%release
-Requires: %name-noatun = %epoch:%version-%release
+
+Requires: %name-core = %epoch:%version-%release
+Requires: kde4-kmix = %epoch:%version-%release
+Requires: kde4-kmid = %epoch:%version-%release
+Requires: kde4-kaudiocreator = %epoch:%version-%release
+Requires: kde4-kscd = %epoch:%version-%release
+Requires: kde4-noatun = %epoch:%version-%release
 
 %description
 Multimedia tools for the K Desktop Environment.
@@ -105,104 +83,106 @@ Multimedia tools for the K Desktop Environment.
 
 #-------------------------------------------------------------------------
 
-%package common
+%package core
 Summary:	Common files for kdemultimedia
 Group:		Graphical desktop/KDE
-Requires:	%lib_name-common = %epoch:%version-%release
 Requires:	vorbis-tools
+Obsoletes:      %name-common
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: kde-config-file
 
-%description common
+%description core
 Common files for kdemultimedia
 
-%post common 
+%post core
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun common 
+%postun core
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files common
+%files core
 %defattr(-,root,root)
-%_sysconfdir/xdg/menus/applications-merged/kde-multimedia-music.menu
-%_libdir/kde4/kcm_audiocd.*
-%_libdir/kde4/kio_audiocd.*
-%_datadir/apps/konqueror/servicemenus/audiocd_play.desktop
-%_datadir/apps/konqueror/servicemenus/audiocd_extract.desktop
-%_datadir/desktop-directories/kde-multimedia-music.directory
-%_datadir/apps/kconf_update/audiocd.upd
-%_datadir/apps/kconf_update/upgrade-metadata.sh
-%_datadir/kde4/services/audiocd.desktop
-%_datadir/kde4/services/audiocd.protocol
-%_libdir/kde4/libaudiocd_*
-%_datadir/apps/kappfinder/apps/Multimedia/*.desktop
-%_datadir/config.kcfg/audiocd_lame_encoder.kcfg
-%_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
-%_libdir/kde4/phonon_xine.so
-%_datadir/kde4/services/phononbackends/xine.desktop
-%_datadir/kde4/services/kcm_phononxine.desktop
-
-%_iconsdir/oxygen/128x128/apps/xinelogo.png
-%_iconsdir/oxygen/22x22/actions/cdsmall.png
-
+%_kde_libdir/kde4/kcm_audiocd.so
+%_kde_libdir/kde4/kcm_cddb.so
+%_kde_libdir/kde4/kcm_phononxine.so
+%_kde_libdir/kde4/kio_audiocd.so
+%_kde_libdir/kde4/phonon_xine.so
+%_kde_configdir/xdg/menus/applications-merged/kde-multimedia-music.menu
+%_kde_datadir/desktop-directories/kde-multimedia-music.directory
+%_kde_appsdir/kappfinder/apps/Multimedia/ams.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/amsynth.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/ardour.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/djplay.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/ecamegapedal.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/freebirth.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/freqtweak.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/galan.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/hydrogen.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/jack-rack.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/jamin.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/meterbridge.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/mixxx.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/muse.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/qjackctl.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/qsynth.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/vkeybd.desktop
+%_kde_appsdir/kappfinder/apps/Multimedia/zynaddsubfx.desktop
+%_kde_appsdir/kconf_update/kcmcddb-emailsettings.upd
+%_kde_appsdir/kconf_update/upgrade-metadata.sh
+%_kde_appsdir/konqueror/servicemenus/audiocd_play.desktop
+%_kde_datadir/config.kcfg/libkcddb.kcfg
+%_kde_datadir/kde4/services/audiocd.desktop
+%_kde_datadir/kde4/services/audiocd.protocol
+%_kde_datadir/kde4/services/kcm_phononxine.desktop
+%_kde_datadir/kde4/services/libkcddb.desktop
+%_kde_datadir/kde4/services/phononbackends/xine.desktop
+%_kde_datadir/kde4/servicetypes/audiomidi.desktop
 
 #-------------------------------------------------------------------------
 
-%package -n %lib_name-common-devel
+%package -n %lib_name-devel
 Summary:	Header files for kdemultimedia
 Group:		Development/KDE and Qt
-Requires:		%lib_name-common = %epoch:%version-%release
+#Requires:	%lib_name-common = %epoch:%version-%release
 
 Provides:   %name-devel = %epoch:%version-%release
 
-Provides:   %lib_name-devel = %epoch:%version-%release
-Provides:	%lib_name_orig-common-devel = %epoch:%version-%release
+#Provides:       %lib_name-devel = %epoch:%version-%release
+Provides:	%lib_name_orig-devel = %epoch:%version-%release
 
-%description -n %lib_name-common-devel
+%description -n %lib_name-devel
 Header files needed for developing kdemultimedia applications.
 
-%files -n %lib_name-common-devel
+%files -n %lib_name-devel
 %defattr(-,root,root,-)
-%_includedir/*
-%_libdir/libaudiocdplugins.so
-%_libdir/libkcddb.so
-%_libdir/libkmidlib.so
-%_libdir/liblibkmid.so
-%_libdir/libkcompactdisc.so
-%exclude %_includedir/noatun
-%_datadir/dbus-1/interfaces/org.kde.KMid.xml
-%_datadir/dbus-1/interfaces/org.kde.KMix.xml
+%{_kde_libdir}/libaudiocdplugins.so
+%{_kde_libdir}/libkcddb.so
+%{_kde_libdir}/libkcompactdisc.so
+%{_kde_libdir}/libkdeinit4_kmix.so
+%{_kde_libdir}/libkdeinit4_kmixctrl.so
+%{_kde_libdir}/libkdeinit4_kmixd.so
+%{_kde_libdir}/libkdeinit4_noatun.so
+%{_kde_libdir}/libkmidlib.so
+%{_kde_libdir}/liblibkmid.so
+%{_kde_libdir}/libnoatun.so
 
-#-------------------------------------------------------------------------
+%_kde_includedir/audiocdencoder.h
+%dir %_kde_includedir/libkcompactdisc
+%_kde_includedir/libkcompactdisc/*
+%dir %_kde_includedir/noatun
+%_kde_includedir/noatun/*
+%dir %_kde_includedir/libkmid
+%_kde_includedir/libkmid/*
+%dir %_kde_includedir/libkcddb
+%_kde_includedir/libkcddb/*
 
-%package -n %lib_name-common
-Summary:	Libraries files for kdemultimedia
-Group:         Graphical desktop/KDE
-Provides: %lib_name = %epoch:%version-%release
-Provides: %lib_name_orig-common = %epoch:%version-%release
-
-%description -n %lib_name-common
-Libraries files needed for developing kdemultimedia applications.
-
-%post -n %lib_name-common -p /sbin/ldconfig
-%postun -n %lib_name-common -p  /sbin/ldconfig
-
-%files -n %lib_name-common
-%defattr(-,root,root,-)
-%_libdir/libkmidlib.so.*
-%_libdir/libkcddb.so.*
-%_libdir/libaudiocdplugins.so.*
-%_libdir/libkcompactdisc.so.*
-%_libdir/liblibkmid.so.*
-%_libdir/kde4/kcm_phononxine.so
-#-------------------------------------------------------------------------
-
-%package juk
+#--------------------------------------------------------------------
+%package -n kde4-juk
 Summary:       JuK is a jukebox and music manager for the KDE desktop.
 Group:         Graphical desktop/KDE
 Requires:      %name-common = %epoch:%version-%release
@@ -210,7 +190,7 @@ Provides:	juk4
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%description juk
+%description  -n kde4-juk
 JuK is a jukebox and music manager for the KDE desktop similar to 
 jukebox software on other platforms such as iTunes or RealOne. 
 Its features include support for Ogg Vorbis and MP3 formats, 
@@ -218,99 +198,90 @@ tag editing support for both formats (including ID3v2 for MP3 files),
 output to aRts or GStreamer, multiple playlists, and lots of other 
 groovy stuff.
 
-%post  juk 
+%post  -n kde4-juk 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  juk 
+%postun  -n kde4-juk 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files juk
+%files  -n kde4-juk
 %defattr(-,root,root,-)
-#%_bindir/juk
-#%_datadir/applications/kde4/juk.desktop
-#%_iconsdir/*/*/*/juk*
-%config(noreplace) %_datadir/config/jukrc
-#%dir %_datadir/apps/juk
-#%_datadir/apps/juk/*
-#%_datadir/apps/konqueror/servicemenus/jukservicemenu.desktop
-#%doc %_docdir/HTML/en/juk/*.png
-#%doc %_docdir/HTML/en/juk/*.bz2
-#%doc %_docdir/HTML/en/juk/*.docbook
+%_kde_datadir/config/jukrc
 
 #-------------------------------------------------------------------------
 
-%package kmix
+%package  -n kde4-kmix
 Summary:       kmix, kmixctrl program
 Group:         Graphical desktop/KDE
 Provides:	kmix4, kmixctrl4
 Requires:	 alsa-utils
 
-%description kmix
+%description  -n kde4-kmix
 The audio mixer as a standalone program and Kicker applet
 
-%post kmix 
+%post  -n kde4-kmix 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  kmix 
+%postun   -n kde4-kmix 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
 
-%files kmix
+%files  -n kde4-kmix
 %defattr(-,root,root,-)
-%_bindir/kmix
-%_bindir/kmixd
-%_bindir/kmixctrl
-%_libdir/kde4/kmix*.so
-%_datadir/autostart/restore_kmix_volumes.desktop
-%_iconsdir/*/*/*/kmix*
-%_datadir/kde4/services/kmixctrl_restore.desktop
-%_datadir/applications/kde4/kmix.desktop
-%dir %_datadir/apps/kmix/
-%_datadir/apps/kmix/*
-%_datadir/apps/kicker/applets/kmixapplet.desktop
-%_libdir/libkdeinit_kmix.*
-%_libdir/libkdeinit_kmixctrl.*
-%_libdir/libkdeinit_kmixd.so
-
-%doc %_docdir/HTML/en/kmix/*.bz2
-%doc %_docdir/HTML/en/kmix/*.docbook
-%doc %_docdir/HTML/en/kmix/*.png
-
+%_kde_bindir/kmix
+%_kde_bindir/kmixctrl
+%_kde_bindir/kmixd
+%_kde_datadir/applications/kde4/kmix.desktop
+%_kde_appsdir/kicker/applets/kmixapplet.desktop
+%_kde_appsdir/kmix/kmixui.rc
+%_kde_appsdir/kmix/pics/*.png
+%_kde_appsdir/kmix/profiles/ALSA.default.xml
+%_kde_appsdir/kmix/profiles/OSS.default.xml
+%_kde_datadir/autostart/restore_kmix_volumes.desktop
+%dir %_kde_docdir/HTML/en/kmix
+%doc %_kde_docdir/HTML/en/kmix/index.cache.bz2
+%doc %_kde_docdir/HTML/en/kmix/index.docbook
+%doc %_kde_docdir/HTML/en/kmix/*.png
+%_kde_datadir/icons/hicolor/*/apps/kmix.png
+%_kde_datadir/kde4/services/kmixctrl_restore.desktop
+%_kde_libdir/kde4/kmix_panelapplet.so
+%_datadir/dbus-1/interfaces/org.kde.KMix.xml
 #-------------------------------------------------------------------------
 
-%package krec
+%package  -n kde4-krec
 Summary:       krec program
 Group:         Graphical desktop/KDE
 Requires:	%lib_name-common = %epoch:%version-%release
 Provides:	krec4
 
-%description krec
+%description  -n kde4-krec
 A recording frontend using aRts
 
-%post  krec 
+%post   -n kde4-krec 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  krec 
+%postun   -n kde4-krec 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files krec
+%files -n kde4-krec
 %defattr(-,root,root,-)
+
 
 #-------------------------------------------------------------------------
 
-%package kscd
+%package  -n kde4-kscd
 Summary:       kscd program
 Group:         Graphical desktop/KDE
 
@@ -318,40 +289,33 @@ Provides:	kscd4
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%description kscd
+%description  -n kde4-kscd
 A CD player with an interface to the internet CDDB database
 
-%post  kscd 
+%post   -n kde4-kscd 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  kscd 
+%postun   -n kde4-kscd 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files kscd
+%files  -n kde4-kscd
 %defattr(-,root,root,-)
-%_bindir/kscd
-%_bindir/workman2cddb.pl
-%_iconsdir/*/*/*/kscd*
-%_datadir/config.kcfg/kscd.kcfg
-%_datadir/config.kcfg/libkcddb.kcfg
-%_datadir/kde4/services/libkcddb.desktop
-%_datadir/applications/kde4/kscd.desktop
-#%dir %_datadir/apps/kscd/
-#%_datadir/apps/kscd/*
-%_datadir/apps/profiles/kscd.profile.xml
-%_datadir/apps/kconf_update/kcmcddb-emailsettings.upd
-%_libdir/kde4/kcm_cddb.*
-%doc %_docdir/HTML/en/kscd/*.bz2
-%doc %_docdir/HTML/en/kscd/*.docbook
-%doc %_docdir/HTML/en/kscd/*.png
+%_kde_bindir/kscd
+%_kde_datadir/applications/kde4/kscd.desktop
+%_kde_appsdir/profiles/kscd.profile.xml
+%_kde_datadir/config.kcfg/kscd.kcfg
+%_kde_docdir/HTML/en/kscd/index.cache.bz2
+%_kde_docdir/HTML/en/kscd/index.docbook
+%_kde_docdir/HTML/en/kscd/*.png
+%_kde_datadir/icons/hicolor/*/apps/kscd.png
 
 #-------------------------------------------------------------------------
 
-%package kmid
+%package  -n kde4-kmid
 Summary:       kmid program
 Group:         Graphical desktop/KDE
 Provides: kmid4
@@ -360,35 +324,50 @@ Provides: %name-kmidi = %epoch:%version-%release
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%description kmid
+%description  -n kde4-kmid
 Kmid program
 
-%post  kmid 
+%post   -n kde4-kmid 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  kmid 
+%postun   -n kde4-kmid 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files kmid
+%files  -n kde4-kmid
 %defattr(-,root,root,-)
-%_bindir/kmid
-%_iconsdir/*/*/*/kmid.*
-%_libdir/kde4/libkmidpart.*
-%dir %_datadir/apps/kmid/
-%_datadir/apps/kmid/*
-%_datadir/kde4/servicetypes/audiomidi.desktop
-%_datadir/applications/kde4/kmid.desktop
-%_datadir/mimelnk/audio/x-karaoke.desktop
-%doc %_docdir/HTML/en/kmid/*.bz2
-%doc %_docdir/HTML/en/kmid/*.docbook
+%_kde_bindir/kmid
+%_kde_datadir/applications/kde4/kmid.desktop
+%_kde_appsdir/kmid/DiesIrae.kar
+%_kde_appsdir/kmid/Guantanamera.kar
+%_kde_appsdir/kmid/MariaDeLasMercedes.kar
+%_kde_appsdir/kmid/OFortuna.kar
+%_kde_appsdir/kmid/fm/drums.o3
+%_kde_appsdir/kmid/fm/drums.sb
+%_kde_appsdir/kmid/fm/std.o3
+%_kde_appsdir/kmid/fm/std.sb
+%_kde_appsdir/kmid/icons/button1.xpm
+%_kde_appsdir/kmid/icons/button2.xpm
+%_kde_appsdir/kmid/icons/keyboard.xpm
+%_kde_appsdir/kmid/icons/oxygen/*/*/*
+%_kde_appsdir/kmid/kmid_partui.rc
+%_kde_appsdir/kmid/kmidui.rc
+%_kde_appsdir/kmid/maps/YamahaPSR500.map
+%_kde_appsdir/kmid/maps/YamahaPSS790.map
+%_kde_appsdir/kmid/maps/YamahaQY10.map
+%_kde_appsdir/kmid/maps/gm.map
+%doc %_kde_docdir/HTML/en/kmid/index.cache.bz2
+%doc %_kde_docdir/HTML/en/kmid/index.docbook
+%_kde_datadir/icons/hicolor/*/apps/kmid.png
+%_kde_libdir/kde4/libkmidpart.so
+%_datadir/dbus-1/interfaces/org.kde.KMid.xml
 
 #-------------------------------------------------------------------------
 
-%package kaudiocreator
+%package  -n kde4-kaudiocreator
 Summary:       kaudiocreator program
 Group:         Graphical desktop/KDE
 Provides:	kaudiocreator4
@@ -397,39 +376,50 @@ Requires:	%name-common = %epoch:%version-%release
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%description kaudiocreator
+%description  -n kde4-kaudiocreator
 CD ripper and audio encoder frontend.
 
-%post  kaudiocreator 
+%post   -n kde4-kaudiocreator 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
+%update_icon_cache locolor
 
-%postun  kaudiocreator 
+%postun   -n kde4-kaudiocreator 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
+%clean_icon_cache locolor
 
-%files kaudiocreator
+%files  -n kde4-kaudiocreator
 %defattr(-,root,root,-)
-%_bindir/kaudiocreator
-%_datadir/applications/kde4/kaudiocreator.desktop
-%dir %_datadir/apps/kaudiocreator/
-%_datadir/apps/kaudiocreator/*
-%_iconsdir/*/*/*/kaudiocreator*
-%_datadir/apps/kconf_update/kaudiocreator-libkcddb.upd
-%_datadir/config.kcfg/kaudiocreator.kcfg
-%_datadir/config.kcfg/kaudiocreator_encoders.kcfg
-%_datadir/apps/kconf_update/kaudiocreator-meta.upd
-%_datadir/apps/kconf_update/upgrade-kaudiocreator-metadata.sh
-%doc %_docdir/HTML/en/kaudiocreator/*.png
-%doc %_docdir/HTML/en/kaudiocreator/*.bz2
-%doc %_docdir/HTML/en/kaudiocreator/*.docbook
+%_kde_bindir/kaudiocreator
+%_kde_bindir/workman2cddb.pl
+%_kde_datadir/applications/kde4/kaudiocreator.desktop
+%_kde_appsdir/kaudiocreator/kaudiocreator.notifyrc
+%_kde_appsdir/kaudiocreator/kaudiocreatorui.rc
+%_kde_appsdir/konqueror/servicemenus/audiocd_extract.desktop
+%_kde_appsdir/kconf_update/kaudiocreator-libkcddb.upd
+%_kde_appsdir/kconf_update/kaudiocreator-meta.upd
+%_kde_appsdir/kconf_update/upgrade-kaudiocreator-metadata.sh
+%_kde_datadir/config.kcfg/kaudiocreator.kcfg
+%_kde_datadir/config.kcfg/kaudiocreator_encoders.kcfg
+%_kde_docdir/HTML/en/kaudiocreator/*.png
+%_kde_docdir/HTML/en/kaudiocreator/index.cache.bz2
+%_kde_docdir/HTML/en/kaudiocreator/index.docbook
+%_kde_datadir/icons/hicolor/*/apps/kaudiocreator.png
+%_kde_datadir/icons/locolor/*/apps/kaudiocreator.png
+%_kde_datadir/config.kcfg/audiocd_lame_encoder.kcfg
+%_kde_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
+%_kde_libdir/kde4/libaudiocd_encoder_lame.so
+%_kde_libdir/kde4/libaudiocd_encoder_vorbis.so
+%_kde_libdir/kde4/libaudiocd_encoder_wav.so
+%_kde_datadir/apps/kconf_update/audiocd.upd
 
 #-------------------------------------------------------------------------
 
 
-%package noatun
+%package  -n kde4-noatun
 Summary:       noatun program
 Group:         Graphical desktop/KDE
 Requires:	%lib_name-noatun = %epoch:%version-%release
@@ -439,83 +429,160 @@ Provides:	noatun4
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
-%description noatun
+%description  -n kde4-noatun
 A multimedia player for sound and movies, very extensible due to 
 it's plugin interface
 
-%post  noatun 
+%post   -n kde4-noatun 
 /sbin/ldconfig
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-%postun  noatun 
+%postun   -n kde4-noatun 
 /sbin/ldconfig
 %{clean_desktop_database}
 %clean_icon_cache hicolor
 
-%files noatun
+%files  -n kde4-noatun
 %defattr(-,root,root,-)
-%_bindir/noatun
-%dir %_datadir/apps/noatun
-%_datadir/apps/noatun/*
-%_iconsdir/*/*/*/noatun*
-%_datadir/applications/kde4/noatun.desktop
-%doc %_docdir/HTML/en/noatun/*.bz2
-%doc %_docdir/HTML/en/noatun/*.docbook
-%_datadir/kde4/services/noatun/noatun_milkchocolate.desktop
-%_datadir/kde4/services/noatun/noatun_splitplaylist.desktop
-%_datadir/kde4/servicetypes/noatunplugin.desktop
+%_kde_bindir/noatun
+%_kde_datadir/applications/kde4/noatun.desktop
+%_kde_appsdir/noatun/eq.preset/*
+%_kde_appsdir/noatun/icons/oxygen/*/*/*
+%_kde_appsdir/noatun/noatun.rc
+%_kde_appsdir/noatun/splui.rc
+%dir %_kde_docdir/HTML/en/noatun
+%doc %_kde_docdir/HTML/en/noatun/index.cache.bz2
+%doc %_kde_docdir/HTML/en/noatun/index.docbook
+%_kde_datadir/kde4/services/noatun/noatun_milkchocolate.desktop
+%_kde_datadir/kde4/services/noatun/noatun_splitplaylist.desktop
+%_kde_datadir/kde4/servicetypes/noatunplugin.desktop
+%_kde_iconsdir/oxygen/*/*/*
+%_kde_libdir/kde4/noatun_*
 
-#-------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-%package -n %lib_name-noatun
-Summary:       Librarie for Noatun  program
-Group:         Development/KDE and Qt
-Provides:	%lib_name_orig-noatun = %epoch:%version-%release
+%define libaudiocdplugins %mklibname audiocdplugins 1
 
-%description -n %lib_name-noatun
-Library for noatun program
+%package -n %libaudiocdplugins
+Summary:    KDE 4 library
+Group:      System/Libraries
+Conflicts:  %lib_name-common < 3.91
 
-%post -n %lib_name-noatun -p /sbin/ldconfig
-%postun -n %lib_name-noatun -p  /sbin/ldconfig
+%description -n %libaudiocdplugins
+KDE 4 library.
 
-%files -n %lib_name-noatun
-%defattr(-,root,root,-)
-%_libdir/libnoatun.so.*
-%_libdir/libkdeinit_noatun.so
-%_libdir/kde4/noatun_milkchocolate.so
-%_libdir/kde4/noatun_splitplaylist.so
-#-------------------------------------------------------------------------
+%post -n %libaudiocdplugins -p /sbin/ldconfig
+%postun -n %libaudiocdplugins -p /sbin/ldconfig
 
-%package -n %lib_name-noatun-devel
-Summary:       Devel files for Noatun  program
-Group:         Development/KDE and Qt
-Requires:	%lib_name-noatun = %epoch:%version-%release
-Provides:	%lib_name_orig-noatun-devel
-Provides:	noatun4-devel
+%files -n %libaudiocdplugins
+%defattr(-,root,root)
+%_kde_libdir/libaudiocdplugins.so.*
 
-%description -n %lib_name-noatun-devel
-Devel files for noatun program
+#-----------------------------------------------------------------------------
 
-%files -n %lib_name-noatun-devel
-%defattr(-,root,root,-)
-%dir %_includedir/noatun/
-%_includedir/noatun/*.h
-%_libdir/libnoatun.so
+%define libkcddb %mklibname kcddb 5
 
-#-------------------------------------------------------------------------
+%package -n %libkcddb
+Summary: KDE 4 library
+Group: System/Libraries
+Conflicts:  %lib_name-common < 3.91
+
+%description -n %libkcddb
+KDE 4 library.
+
+%post -n %libkcddb -p /sbin/ldconfig
+%postun -n %libkcddb -p /sbin/ldconfig
+
+%files -n %libkcddb
+%defattr(-,root,root)
+%_kde_libdir/libkcddb.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkcompactdisc %mklibname kcompactdisc 5
+
+%package -n %libkcompactdisc
+Summary: KDE 4 library
+Group: System/Libraries
+Conflicts:  %lib_name-common < 3.91
+
+%description -n %libkcompactdisc
+KDE 4 library.
+
+%post -n %libkcompactdisc -p /sbin/ldconfig
+%postun -n %libkcompactdisc -p /sbin/ldconfig
+
+%files -n %libkcompactdisc
+%defattr(-,root,root)
+%_kde_libdir/libkcompactdisc.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkmidlib %mklibname kmidlib 1
+
+%package -n %libkmidlib
+Summary: KDE 4 library
+Group: System/Libraries
+Conflicts:  %lib_name-common < 3.91
+
+%description -n %libkmidlib
+KDE 4 library.
+
+%post -n %libkmidlib -p /sbin/ldconfig
+%postun -n %libkmidlib -p /sbin/ldconfig
+
+%files -n %libkmidlib
+%defattr(-,root,root)
+%_kde_libdir/libkmidlib.so.*
+
+#-----------------------------------------------------------------------------
+
+%define liblibkmid %mklibname libkmid 0.95.0
+
+%package -n %liblibkmid
+Summary: KDE 4 library
+Group: System/Libraries
+Conflicts:  %lib_name-common < 3.91
+
+%description -n %liblibkmid
+KDE 4 library.
+
+%post -n %liblibkmid -p /sbin/ldconfig
+%postun -n %liblibkmid -p /sbin/ldconfig
+
+%files -n %liblibkmid
+%defattr(-,root,root)
+%_kde_libdir/liblibkmid.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libnoatun %mklibname noatun 1.2.0
+
+%package -n %libnoatun
+Summary: KDE 4 library
+Group: System/Libraries
+Conflicts:  %lib_name-common < 3.91
+
+%description -n %libnoatun
+KDE 4 library.
+
+%post -n %libnoatun -p /sbin/ldconfig
+%postun -n %libnoatun -p /sbin/ldconfig
+
+%files -n %libnoatun
+%defattr(-,root,root)
+%_kde_libdir/libnoatun.so.*
+
+#-----------------------------------------------------------------------------
 
 %prep
-%setup -q -nkdemultimedia-%version-%branch_date
+%setup -q -nkdemultimedia-%version
 
 %build
-cd $RPM_BUILD_DIR/kdemultimedia-%version-%branch_date
-mkdir build
-cd build
-export QTDIR=/usr/lib/qt4/
-export PATH=$QTDIR/bin:$PATH
+cd $RPM_BUILD_DIR/kdemultimedia-%version
 
-cmake -DCMAKE_INSTALL_PREFIX=%_prefix \
+%cmake_kde4 \
 %if %use_enable_final
       -DKDE4_ENABLE_FINAL=ON \
 %endif
@@ -523,51 +590,23 @@ cmake -DCMAKE_INSTALL_PREFIX=%_prefix \
       -DKDE4_ENABLE_FPIE=ON \
 %endif
 %if %unstable
-      -DCMAKE_BUILD_TYPE=Debug \
+      -DCMAKE_BUILD_TYPE=debug
 %endif
-%if "%{_lib}" != "lib"
-      -DLIB_SUFFIX=64 \
-%endif
-        ../
 
 %make
 
 %install
 rm -fr %buildroot
-cd $RPM_BUILD_DIR/kdemultimedia-%version-%branch_date
+cd $RPM_BUILD_DIR/kdemultimedia-%version
 cd build
 
 %makeinstall_std
 
-
-
-
-# Create LMDK structure
-# Need to port it
-
-#kdedesktop2mdkmenu.pl kdemultimedia Multimedia/Sound %buildroot/%_datadir/applications/kde4/juk.desktop %buildroot/%_menudir/kdemultimedia-juk kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kmid Multimedia/Sound %buildroot/%_datadir/applications/kde4/kmid.desktop %buildroot/%_menudir/kdemultimedia-kmid kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kmid Multimedia/Sound %buildroot/%_datadir/applications/kde4/kmid.desktop %buildroot/%_menudir/kdemultimedia-kmid kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kmix Multimedia/Sound %buildroot/%_datadir/applications/kde4/kmix.desktop %buildroot/%_menudir/kdemultimedia-kmix kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kscd Multimedia/Sound %buildroot/%_datadir/applications/kde4/kscd.desktop %buildroot/%_menudir/kdemultimedia-kscd kde
-#kdedesktop2mdkmenu.pl kdemultimedia-noatun Multimedia/Sound %buildroot/%_datadir/applications/kde4/noatun.desktop %buildroot/%_menudir/kdemultimedia-noatun kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kaudiocreator Multimedia/Sound %buildroot/%_datadir/applications/kde4/kaudiocreator.desktop %buildroot/%_menudir/kdemultimedia-kaudiocreator kde
-#kdedesktop2mdkmenu.pl kdemultimedia-krec Multimedia/Sound %buildroot/%_datadir/applications/kde4/krec.desktop %buildroot/%_menudir/kdemultimedia-krec kde
-#kdedesktop2mdkmenu.pl kdemultimedia-common System/Configuration/KDE/Sound %buildroot/%_datadir/applications/kde4/audiocd.desktop %buildroot/%_menudir/kdemultimedia-audiocd kde
-#kdedesktop2mdkmenu.pl kdemultimedia-kscd System/Configuration/KDE/Sound %buildroot/%_datadir/applications/kde4/libkcddb.desktop %buildroot/%_menudir/kdemultimedia-libkcddb kde
-
-
-
-
 # David - 2.2-0.beta1.1mdk - Remove some non legal songs
-for i in %buildroot/%_datadir/apps/kmidi/*.mid ; do rm -f $i ; done
+for i in %buildroot/%_kde_appsdir/kmidi/*.mid ; do rm -f $i ; done
 
-
-install -d -m 0775 %buildroot/%_datadir/config/
-install -m 0644 %SOURCE2 %buildroot/%_datadir/config/jukrc
-
+install -d -m 0775 %buildroot/%_kde_datadir/config/
+install -m 0644 %SOURCE2 %buildroot/%_kde_datadir/config/jukrc
 
 %clean
 rm -fr %buildroot
-
-
