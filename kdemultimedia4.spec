@@ -21,6 +21,7 @@ Summary: K Desktop Environment
 Version: 3.92.0
 Release: %mkrel 0.%revision.1
 Group: Graphical desktop/KDE
+Epoch: 2
 License: GPL
 URL: http://www.kde.org
 %if %branch
@@ -79,7 +80,7 @@ Core files for %{name}.
 %package -n kde4-juk
 Summary: %{name} juk
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-juk
 
 %description -n kde4-juk
@@ -101,7 +102,7 @@ Obsoletes: %name-juk
 %package -n kde4-audiocd
 Summary: %{name} audiocd
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-audiocd
 
 %description -n kde4-audiocd
@@ -143,7 +144,7 @@ KDE 4 library
 %package -n kde4-kmix
 Summary: %{name} kmix
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmix
 
 %description -n kde4-kmix
@@ -169,7 +170,7 @@ Obsoletes: %name-kmix
 %package -n kde4-kscd
 Summary: %{name} kscd
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-kscd
 
 %description -n kde4-kscd
@@ -229,7 +230,7 @@ KDE 4 library
 %package -n kde4-phonon-xine
 Summary: %{name} phonon-xine
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-phonon-xine
 
 %description -n kde4-phonon-xine
@@ -247,7 +248,7 @@ Obsoletes: %name-phonon-xine
 %package -n kde4-noatun
 Summary: %{name} noatun
 Group: Graphical desktop/KDE
-Requires: %name-core = %version
+Requires: %name-core = %epoch:%version
 Obsoletes: %name-noatun
 
 %description -n kde4-noatun
@@ -291,10 +292,10 @@ Summary: Devel stuff for %{name}
 Group: Development/KDE and Qt
 Requires: kde4-macros
 Requires: kdelibs4-devel
-Requires: %libaudiocdplugins = %version
-Requires: %libkcddb = %version
-Requires: %libkcompactdisc = %version
-Requires: %libnoatun = %version
+Requires: %libaudiocdplugins = %epoch:%version
+Requires: %libkcddb = %epoch:%version
+Requires: %libkcompactdisc = %epoch:%version
+Requires: %libnoatun = %epoch:%version
 Requires: kdemultimedia4
 
 %description  devel
@@ -303,7 +304,7 @@ This package contains header files needed if you wish to build applications base
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
-%_kde_prefix/include/*
+%_kde_includedir/*
 
 #----------------------------------------------------------------------
 
