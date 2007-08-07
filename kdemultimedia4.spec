@@ -1,4 +1,4 @@
-%define revision 693475
+%define revision 697095
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -47,9 +47,6 @@ BuildRequires: libfreebob-devel
 BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
 Requires: kde4-juk
-Requires: kde4-kaudiocreator
-Requires: kde4-audiocd
-Requires: kde4-kmid
 Requires: kde4-kmix
 Requires: kde4-kscd
 Requires: kde4-phonon-xine
@@ -76,9 +73,6 @@ Core files for %{name}.
 %defattr(-,root,root)
 %_kde_iconsdir/*/*/*/*
 %_kde_appsdir/kconf_update/*
-%_kde_appsdir/kappfinder/apps/*
-%_kde_prefix/etc/xdg/menus/applications-merged/*
-%_kde_datadir/desktop-directories/*
 
 #----------------------------------------------------------------------
 
@@ -104,28 +98,6 @@ Obsoletes: %name-juk
 
 #---------------------------------------------
 
-%package -n kde4-kaudiocreator
-Summary: %{name} kaudiocreator
-Group: Graphical desktop/KDE
-Requires: %name-core = %version
-Obsoletes: %name-kaudiocreator
-
-%description -n kde4-kaudiocreator
-%{name} kaudiocreator.
-
-%files -n kde4-kaudiocreator
-%defattr(-,root,root)
-#%_kde_appsdir/kconf_update
-%_kde_appsdir/kaudiocreator
-%_kde_appsdir/konqueror
-%_kde_bindir/kaudiocreator
-%_kde_datadir/applications/kde4/kaudiocreator.desktop
-%_kde_datadir/config.kcfg/kaudiocreator.kcfg
-%_kde_datadir/config.kcfg/kaudiocreator_encoders.kcfg
-%_kde_docdir/HTML/*/kaudiocreator
-
-#---------------------------------------------
-
 %package -n kde4-audiocd
 Summary: %{name} audiocd
 Group: Graphical desktop/KDE
@@ -140,7 +112,6 @@ Obsoletes: %name-audiocd
 #%_kde_appsdir/kconf_update
 %_kde_libdir/kde4/kcm_audiocd.so
 %_kde_libdir/kde4/kio_audiocd.so
-%_kde_libdir/kde4/libaudiocd_encoder_flac.so
 %_kde_libdir/kde4/libaudiocd_encoder_lame.so
 %_kde_libdir/kde4/libaudiocd_encoder_vorbis.so
 %_kde_libdir/kde4/libaudiocd_encoder_wav.so
@@ -166,63 +137,6 @@ KDE 4 library
 %files -n %libaudiocdplugins
 %defattr(-,root,root)
 %_kde_libdir/libaudiocdplugins.so.*
-
-#---------------------------------------------
-
-%package -n kde4-kmid
-Summary: %{name} kmid
-Group: Graphical desktop/KDE
-Requires: %name-core = %version
-Obsoletes: %name-kmid
-
-%description -n kde4-kmid
-%{name} kmid.
-
-%files -n kde4-kmid
-%defattr(-,root,root)
-%_kde_appsdir/kmid
-%_kde_bindir/kmid
-%_kde_libdir/kde4/libkmidpart.so
-%_kde_datadir/applications/kde4/kmid.desktop
-%_kde_datadir/kde4/servicetypes/audiomidi.desktop
-%_datadir/dbus-1/interfaces/org.kde.KMid.xml
-%_kde_docdir/HTML/*/kmid
-
-#---------------------------------------------
-
-%define liblibkmid %mklibname libkmid 0
-
-%package -n %liblibkmid
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %liblibkmid
-KDE 4 library
-
-%post -n %liblibkmid -p /sbin/ldconfig
-%postun -n %liblibkmid -p /sbin/ldconfig
-
-%files -n %liblibkmid
-%defattr(-,root,root)
-%_kde_libdir/liblibkmid.so.*
-
-#---------------------------------------------
-
-%define libkmidlib %mklibname kmidlib 1
-
-%package -n %libkmidlib
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkmidlib
-KDE 4 library
-
-%post -n %libkmidlib -p /sbin/ldconfig
-%postun -n %libkmidlib -p /sbin/ldconfig
-
-%files -n %libkmidlib
-%defattr(-,root,root)
-%_kde_libdir/libkmidlib.so.*
 
 #---------------------------------------------
 
@@ -378,7 +292,6 @@ Group: Development/KDE and Qt
 Requires: kde4-macros
 Requires: kdelibs4-devel
 Requires: %libaudiocdplugins = %version
-Requires: %libkmidlib = %version
 Requires: %libkcddb = %version
 Requires: %libkcompactdisc = %version
 Requires: %libnoatun = %version
