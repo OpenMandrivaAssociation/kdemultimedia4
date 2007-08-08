@@ -35,7 +35,7 @@ BuildRequires: cdparanoia
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
-BuildRequires: libxine-devel 
+BuildRequires: libxine-devel >= 1.1.5 
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
@@ -43,10 +43,11 @@ BuildRequires: libspeex-devel
 BuildRequires: libsamplerate-devel
 BuildRequires: X11-devel
 BuildRequires: akode-devel
-BuildRequires: kdebase4-devel
 BuildRequires: libfreebob-devel
 BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
+BuildRequires: libxcb-devel
+BuildRequires: libtaglib-devel
 Requires: kde4-juk
 Requires: kde4-kmix
 Requires: kde4-kscd
