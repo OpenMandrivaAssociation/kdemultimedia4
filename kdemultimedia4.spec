@@ -52,7 +52,6 @@ BuildRequires: libtaglib-devel
 Requires: kde4-juk
 Requires: kde4-kmix
 Requires: kde4-kscd
-Requires: kde4-phonon-xine
 Requires: kde4-noatun
 
 %description
@@ -226,24 +225,6 @@ KDE 4 library
 %files -n %libkcompactdisc
 %defattr(-,root,root)
 %_kde_libdir/libkcompactdisc.so.*
-
-#---------------------------------------------
-
-%package -n kde4-phonon-xine
-Summary: %{name} phonon-xine
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-phonon-xine
-
-%description -n kde4-phonon-xine
-%{name} phonon-xine.
-
-%files -n kde4-phonon-xine
-%defattr(-,root,root)
-%_kde_libdir/kde4/kcm_phononxine.so
-%_kde_libdir/kde4/phonon_xine.so
-%_kde_datadir/kde4/services/kcm_phononxine.desktop
-%_kde_datadir/kde4/services/phononbackends/xine.desktop
 
 #---------------------------------------------
 
