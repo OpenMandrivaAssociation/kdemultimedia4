@@ -1,4 +1,4 @@
-%define revision 703342
+%define revision 705308
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
