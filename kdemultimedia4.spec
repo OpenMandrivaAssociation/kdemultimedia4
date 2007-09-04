@@ -9,7 +9,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %unstable
@@ -18,8 +18,8 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 3.92.0
-Release: %mkrel 0.%revision.1
+Version: 3.93.0
+Release: %mkrel 1
 Group: Graphical desktop/KDE
 Epoch: 2
 License: GPL
@@ -36,7 +36,7 @@ BuildRequires: cdparanoia
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
-BuildRequires: libxine-devel >= 1.1.5 
+BuildRequires: libxine-devel >= 1.1.4 
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
