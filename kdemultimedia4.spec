@@ -1,4 +1,4 @@
-%define revision 706280
+%define revision 708071
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -9,7 +9,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %unstable
@@ -154,11 +154,9 @@ Obsoletes: %name-kmix
 %files -n kde4-kmix
 %defattr(-,root,root)
 %_kde_appsdir/kmix
-%_kde_appsdir/kicker
 %_kde_bindir/kmix
 %_kde_bindir/kmixctrl
 %_kde_bindir/kmixd
-%_kde_libdir/kde4/kmix_panelapplet.so
 %_kde_datadir/applications/kde4/kmix.desktop
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
