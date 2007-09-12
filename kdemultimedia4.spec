@@ -1,4 +1,4 @@
-%define revision 708071
+%define revision 711009
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -154,6 +154,7 @@ Obsoletes: %name-kmix
 %files -n kde4-kmix
 %defattr(-,root,root)
 %_kde_appsdir/kmix
+%_kde_appsdir/kicker/applets/kmixapplet*
 %_kde_bindir/kmix
 %_kde_bindir/kmixctrl
 %_kde_bindir/kmixd
@@ -161,6 +162,7 @@ Obsoletes: %name-kmix
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
 %_kde_libdir/libkdeinit4_kmix*
+%_kde_libdir/kde4/kmix_*
 %_datadir/dbus-1/interfaces/org.kde.KMix.xml
 %_kde_docdir/HTML/*/kmix
 
@@ -250,7 +252,7 @@ Obsoletes: %name-noatun
 
 #---------------------------------------------
 
-%define libnoatun %mklibname noatun 1
+%define libnoatun %mklibname noatun 4
 
 %package -n %libnoatun
 Summary: KDE 4 library
