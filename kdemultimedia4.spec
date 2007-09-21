@@ -1,4 +1,4 @@
-%define revision 711009
+%define revision 714637
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -82,7 +82,7 @@ Core files for %{name}.
 Summary: %{name} juk
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-juk
+Obsoletes: %name-juk < 2:3.93.0-1
 
 %description -n kde4-juk
 %{name} juk.
@@ -104,7 +104,7 @@ Obsoletes: %name-juk
 Summary: %{name} audiocd
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-audiocd
+Obsoletes: %name-audiocd < 2:3.93.0-1
 
 %description -n kde4-audiocd
 %{name} audiocd.
@@ -146,7 +146,7 @@ KDE 4 library
 Summary: %{name} kmix
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-kmix
+Obsoletes: %name-kmix < 2:3.93.0-1
 
 %description -n kde4-kmix
 %{name} kmix.
@@ -172,7 +172,7 @@ Obsoletes: %name-kmix
 Summary: %{name} kscd
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-kscd
+Obsoletes: %name-kscd < 2:3.93.0-1
 
 %description -n kde4-kscd
 %{name} kscd.
@@ -232,7 +232,7 @@ KDE 4 library
 Summary: %{name} noatun
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-noatun
+Obsoletes: %name-noatun < 2:3.93.0-1
 
 %description -n kde4-noatun
 %{name} noatun.
