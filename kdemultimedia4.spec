@@ -32,6 +32,7 @@ Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
+BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
