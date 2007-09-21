@@ -19,9 +19,9 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 3.93.0
-Release: %mkrel 1
+Release: %mkrel 0.%revision.1
 Group: Graphical desktop/KDE
-Epoch: 2
+Epoch: 3
 License: GPL
 URL: http://www.kde.org
 %if %branch
@@ -82,7 +82,7 @@ Core files for %{name}.
 Summary: %{name} juk
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-juk < 2:3.93.0-1
+Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 
 %description -n kde4-juk
 %{name} juk.
@@ -104,7 +104,7 @@ Obsoletes: %name-juk < 2:3.93.0-1
 Summary: %{name} audiocd
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-audiocd < 2:3.93.0-1
+Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 
 %description -n kde4-audiocd
 %{name} audiocd.
@@ -146,7 +146,7 @@ KDE 4 library
 Summary: %{name} kmix
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-kmix < 2:3.93.0-1
+Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 
 %description -n kde4-kmix
 %{name} kmix.
@@ -172,7 +172,7 @@ Obsoletes: %name-kmix < 2:3.93.0-1
 Summary: %{name} kscd
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-kscd < 2:3.93.0-1
+Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
 
 %description -n kde4-kscd
 %{name} kscd.
@@ -232,7 +232,7 @@ KDE 4 library
 Summary: %{name} noatun
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-noatun < 2:3.93.0-1
+Obsoletes: %name-noatun < 3:3.93.0-0.714637.1
 
 %description -n kde4-noatun
 %{name} noatun.
