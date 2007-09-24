@@ -253,7 +253,7 @@ Obsoletes: %name-noatun < 3:3.93.0-0.714637.1
 
 #---------------------------------------------
 
-%define libnoatun %mklibname noatun 4
+%define libnoatun %mklibname noatun 5
 
 %package -n %libnoatun
 Summary: KDE 4 library
