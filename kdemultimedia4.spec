@@ -1,4 +1,4 @@
-%define revision 714637
+%define revision 726889
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -18,8 +18,8 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 3.93.0
-Release: %mkrel 0.%revision.2
+Version: 3.94.0
+Release: %mkrel 0.%revision.1
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -53,7 +53,6 @@ BuildRequires: libtaglib-devel
 Requires: kde4-juk
 Requires: kde4-kmix
 Requires: kde4-kscd
-Requires: kde4-noatun
 
 %description
 %{name} metapackage.
@@ -229,48 +228,6 @@ KDE 4 library
 
 #---------------------------------------------
 
-%package -n kde4-noatun
-Summary: %{name} noatun
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-noatun < 3:3.93.0-0.714637.1
-
-%description -n kde4-noatun
-%{name} noatun.
-
-%files -n kde4-noatun
-%defattr(-,root,root)
-%_kde_appsdir/noatun
-%_kde_bindir/noatun
-%_kde_libdir/kde4/noatun_milkchocolate.so
-%_kde_libdir/kde4/noatun_splitplaylist.so
-%_kde_datadir/applications/kde4/noatun.desktop
-%_kde_datadir/kde4/services/noatun/noatun_milkchocolate.desktop
-%_kde_datadir/kde4/services/noatun/noatun_splitplaylist.desktop
-%_kde_datadir/kde4/servicetypes/noatunplugin.desktop
-%_kde_libdir/libkdeinit4_noatun*
-%_kde_docdir/HTML/*/noatun
-
-#---------------------------------------------
-
-%define libnoatun %mklibname noatun 5
-
-%package -n %libnoatun
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libnoatun
-KDE 4 library
-
-%post -n %libnoatun -p /sbin/ldconfig
-%postun -n %libnoatun -p /sbin/ldconfig
-
-%files -n %libnoatun
-%defattr(-,root,root)
-%_kde_libdir/libnoatun.so.*
-
-#---------------------------------------------
-
 %package devel
 Summary: Devel stuff for %{name}
 Group: Development/KDE and Qt
@@ -279,7 +236,6 @@ Requires: kdelibs4-devel
 Requires: %libaudiocdplugins = %epoch:%version
 Requires: %libkcddb = %epoch:%version
 Requires: %libkcompactdisc = %epoch:%version
-Requires: %libnoatun = %epoch:%version
 Requires: kdemultimedia4
 
 %description  devel
