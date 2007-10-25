@@ -19,7 +19,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 3.94.1
-Release: %mkrel 0.%revision.1
+Release: %mkrel 0.%revision.2
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -63,10 +63,11 @@ Requires: kde4-kscd
 
 #----------------------------------------------------------------------
 
-%package core
-Summary: %name core files
-Group: Graphical desktop/KDE
-Requires: kdelibs4-core
+%package   core
+Summary:   %name core files
+Group:     Graphical desktop/KDE
+Requires:  kdelibs4-core
+Conflicts: oxygen-icon-theme <= 1:3.94.0-0.726654.2
 
 %description core
 Core files for %{name}.
@@ -79,9 +80,9 @@ Core files for %{name}.
 #----------------------------------------------------------------------
 
 %package -n kde4-juk
-Summary: %{name} juk
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
+Summary:   %{name} juk
+Group:     Graphical desktop/KDE
+Requires:  %name-core = %epoch:%version
 Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 
 %description -n kde4-juk
