@@ -1,4 +1,4 @@
-%define revision 731768
+%define revision 734645
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -18,7 +18,7 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 3.95.1
+Version: 3.95.2
 Release: %mkrel 0.%revision.1
 Group: Graphical desktop/KDE
 Epoch: 3
@@ -91,9 +91,9 @@ Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 %files -n kde4-juk
 %defattr(-,root,root)
 %_kde_appsdir/juk
-%_kde_appsdir/konqueror
 %_kde_bindir/juk
 %_kde_datadir/applications/kde4/juk.desktop
+%_kde_datadir/kde4/services/ServiceMenus/jukservicemenu.desktop
 %_datadir/dbus-1/interfaces/org.kde.juk.collection.xml
 %_datadir/dbus-1/interfaces/org.kde.juk.player.xml
 %_datadir/dbus-1/interfaces/org.kde.juk.search.xml
@@ -112,7 +112,6 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 
 %files -n kde4-audiocd
 %defattr(-,root,root)
-#%_kde_appsdir/kconf_update
 %_kde_libdir/kde4/kcm_audiocd.so
 %_kde_libdir/kde4/kio_audiocd.so
 %_kde_libdir/kde4/libaudiocd_encoder_lame.so
@@ -122,6 +121,7 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %_kde_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
+%_kde_datadir/kde4/services/ServiceMenus/audiocd_play.desktop
 
 #---------------------------------------------
 
@@ -158,7 +158,6 @@ Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 %_kde_appsdir/kicker/applets/kmixapplet*
 %_kde_bindir/kmix
 %_kde_bindir/kmixctrl
-%_kde_bindir/kmixd
 %_kde_datadir/applications/kde4/kmix.desktop
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
@@ -181,7 +180,6 @@ Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
 %files -n kde4-kscd
 %defattr(-,root,root)
 %_kde_appsdir/profiles
-%_kde_appsdir/konqueror
 %_kde_bindir/kscd
 %_kde_bindir/workman2cddb.pl
 %_kde_datadir/applications/kde4/kscd.desktop
