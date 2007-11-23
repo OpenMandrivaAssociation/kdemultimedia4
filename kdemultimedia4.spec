@@ -1,4 +1,4 @@
-%define revision 736535
+%define revision 738567
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -18,7 +18,7 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 3.96.0
+Version: 3.96.1
 Release: %mkrel 0.%revision.1
 Group: Graphical desktop/KDE
 Epoch: 3
