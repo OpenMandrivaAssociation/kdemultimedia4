@@ -19,7 +19,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 3.96.1
-Release: %mkrel 0.%revision.1
+Release: %mkrel 0.%revision.2
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -242,7 +242,9 @@ This package contains header files needed if you wish to build applications base
 
 %files devel
 %defattr(-,root,root)
-%_kde_libdir/*.so
+%_kde_libdir/libaudiocdplugins.so
+%_kde_libdir/libkcddb.so
+%_kde_libdir/libkcompactdisc.so
 %_kde_includedir/*
 
 #----------------------------------------------------------------------
