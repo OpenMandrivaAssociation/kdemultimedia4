@@ -19,7 +19,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 3.96.1
-Release: %mkrel 0.%revision.2
+Release: %mkrel 0.%revision.3
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -50,9 +50,12 @@ BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
-Requires: kde4-juk
-Requires: kde4-kmix
-Requires: kde4-kscd
+Requires:      kde4-juk
+Requires:      kde4-kmix
+Requires:      kde4-kscd
+
+Obsoletes:     kde4-noatun <  3:3.94.0-0.726889.1
+Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
 %description
 %{name} metapackage.
