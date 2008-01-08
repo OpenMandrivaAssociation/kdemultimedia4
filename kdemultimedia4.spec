@@ -9,7 +9,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %unstable
@@ -18,7 +18,7 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 3.97.1
+Version: 4.0.0
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -38,7 +38,7 @@ BuildRequires: cdparanoia
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
-BuildRequires: libxine-devel >= 1.1.4 
+BuildRequires: libxine-devel >= 1.1.9 
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
@@ -159,14 +159,12 @@ Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 %files -n kde4-kmix
 %defattr(-,root,root)
 %_kde_appsdir/kmix
-%_kde_appsdir/kicker/applets/kmixapplet*
 %_kde_bindir/kmix
 %_kde_bindir/kmixctrl
 %_kde_datadir/applications/kde4/kmix.desktop
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
 %_kde_libdir/libkdeinit4_kmix*
-%_kde_libdir/kde4/kmix_*
 %_datadir/dbus-1/interfaces/org.kde.KMix.xml
 %_kde_docdir/HTML/*/kmix
 
