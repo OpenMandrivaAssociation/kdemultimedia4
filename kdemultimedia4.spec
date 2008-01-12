@@ -27,7 +27,7 @@ URL: http://www.kde.org
 Release: %mkrel 0.%revision.1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%revision.tar.bz2
 %else
-Release: %mkrel 1
+Release: %mkrel 2
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Buildroot:	%_tmppath/%name-%version-%release-root
@@ -129,11 +129,13 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 
 #---------------------------------------------
 
-%define libaudiocdplugins %mklibname audiocdplugins 1
+%define libaudiocdplugins %mklibname %audiocdplugins_major
+%define  audiocdplugins_major 4
 
 %package -n %libaudiocdplugins
-Summary: KDE 4 library
-Group: System/Libraries
+Summary:    KDE 4 library
+Group:      System/Libraries
+Obsoletes:  %{lib}audiocdplugins1 < 4.0.0-1
 
 %description -n %libaudiocdplugins
 KDE 4 library
@@ -143,7 +145,7 @@ KDE 4 library
 
 %files -n %libaudiocdplugins
 %defattr(-,root,root)
-%_kde_libdir/libaudiocdplugins.so.*
+%_kde_libdir/libaudiocdplugins.so.%{audiocdplugins_major}*
 
 #---------------------------------------------
 
@@ -190,7 +192,8 @@ Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
 
 #---------------------------------------------
 
-%define libkcddb %mklibname kcddb 4
+%define libkcddb %mklibname kcddb %kcddb_major
+%define  kcddb_major 4
 
 %package -n %libkcddb
 Summary: KDE 4 library
@@ -211,7 +214,8 @@ KDE 4 library
 
 #---------------------------------------------
 
-%define libkcompactdisc %mklibname kcompactdisc 4
+%define libkcompactdisc %mklibname kcompactdisc %kcompactdisc_major
+%define kcompactdisc_major 4
 
 %package -n %libkcompactdisc
 Summary: KDE 4 library
@@ -225,7 +229,7 @@ KDE 4 library
 
 %files -n %libkcompactdisc
 %defattr(-,root,root)
-%_kde_libdir/libkcompactdisc.so.*
+%_kde_libdir/libkcompactdisc.so.%{kcompactdisc_major}*
 
 #---------------------------------------------
 
