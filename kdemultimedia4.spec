@@ -27,7 +27,7 @@ URL: http://www.kde.org
 Release: %mkrel 0.%revision.1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%revision.tar.bz2
 %else
-Release: %mkrel 3
+Release: %mkrel 4
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Buildroot:	%_tmppath/%name-%version-%release-root
