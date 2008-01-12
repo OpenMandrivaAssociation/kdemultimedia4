@@ -207,7 +207,7 @@ KDE 4 library
 
 %files -n %libkcddb
 %defattr(-,root,root)
-%_kde_libdir/libkcddb.so.*
+%_kde_libdir/libkcddb.so.%{kcddb_major}*
 %_kde_libdir/kde4/kcm_cddb.so
 %_kde_datadir/config.kcfg/libkcddb.kcfg
 %_kde_datadir/kde4/services/libkcddb.desktop
