@@ -22,7 +22,6 @@ BuildRequires: libcdda-devel
 BuildRequires: libspeex-devel
 BuildRequires: libsamplerate-devel
 BuildRequires: X11-devel
-BuildRequires: akode-devel
 BuildRequires: libfreebob-devel
 BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
@@ -94,11 +93,8 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %defattr(-,root,root)
 %_kde_libdir/kde4/kcm_audiocd.so
 %_kde_libdir/kde4/kio_audiocd.so
-%_kde_libdir/kde4/libaudiocd_encoder_lame.so
-%_kde_libdir/kde4/libaudiocd_encoder_vorbis.so
-%_kde_libdir/kde4/libaudiocd_encoder_wav.so
-%_kde_datadir/config.kcfg/audiocd_lame_encoder.kcfg
-%_kde_datadir/config.kcfg/audiocd_vorbis_encoder.kcfg
+%_kde_libdir/kde4/libaudiocd_*
+%_kde_datadir/config.kcfg/audiocd_*
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
 %_kde_datadir/kde4/services/ServiceMenus/audiocd_play.desktop
@@ -121,7 +117,7 @@ KDE 4 library
 
 %files -n %libaudiocdplugins
 %defattr(-,root,root)
-%_kde_libdir/libaudiocdplugins.so.%{audiocdplugins_major}*
+%_kde_libdir/libaudiocdplugins.so.*
 
 #---------------------------------------------
 
