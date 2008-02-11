@@ -1,35 +1,12 @@
-%define revision 752124
-
-%define use_enable_pie 1
-%{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
-
-%define use_enable_final 0
-%{?_no_enable_final: %{expand: %%global use_enable_final 0}}
-
-%define unstable 1
-%{?_unstable: %{expand: %%global unstable 1}}
-
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %unstable
-%define dont_strip 1
-%endif
-
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.0.0
+Version: 4.0.1
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://www.kde.org
-%if %branch
-Release: %mkrel 0.%revision.1
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%revision.tar.bz2
-%else
-Release: %mkrel 4
+Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-%endif
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
@@ -51,12 +28,11 @@ BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
-Requires:      kde4-juk
-Requires:      kde4-kmix
-Requires:      kde4-kscd
-
-Obsoletes:     kde4-noatun <  3:3.94.0-0.726889.1
-Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
+Requires: kde4-juk
+Requires: kde4-kmix
+Requires: kde4-kscd
+Obsoletes: kde4-noatun <  3:3.94.0-0.726889.1
+Obsoletes: %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
 %description
 %{name} metapackage.
