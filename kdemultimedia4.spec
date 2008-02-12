@@ -216,7 +216,8 @@ Requires: %libkcompactdisc = %epoch:%version
 Requires: kdemultimedia4
 
 %description  devel
-This package contains header files needed if you wish to build applications based on %{name}.
+This package contains header files needed if you wish to build applications
+based on %{name}.
 
 %files devel
 %defattr(-,root,root)
