@@ -1,11 +1,11 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.0.2
+Version: 4.0.3
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 2
+Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
