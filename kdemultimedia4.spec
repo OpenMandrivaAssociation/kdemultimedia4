@@ -1,6 +1,6 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.0.3
+Version: 4.0.68
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -58,16 +58,19 @@ Core files for %{name}.
 
 #----------------------------------------------------------------------
 
-%package -n kde4-juk
+%package -n juk
 Summary:   %{name} juk
 Group:     Graphical desktop/KDE
 Requires:  %name-core = %epoch:%version
 Obsoletes: %name-juk < 3:3.93.0-0.714637.1
+Obsoletes: kde4-juk < 3:4.0.68
+Provides: kde4-juk = %epoch:%version
 
-%description -n kde4-juk
+
+%description -n juk
 %{name} juk.
 
-%files -n kde4-juk
+%files -n juk
 %defattr(-,root,root)
 %_kde_appsdir/juk
 %_kde_bindir/juk
@@ -77,6 +80,29 @@ Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 %_datadir/dbus-1/interfaces/org.kde.juk.player.xml
 %_datadir/dbus-1/interfaces/org.kde.juk.search.xml
 %_kde_docdir/HTML/*/juk
+
+#----------------------------------------------------------------------
+
+%package -n dragonplayer
+Summary: %{name} dragonplayer
+Group: Graphical desktop/KDE
+Requires:  %name-core = %epoch:%version
+Provides: kde4-dragonplayer = %epoch:%version
+
+%description -n dragonplayer
+%{name} dragonplayer.
+
+%files -n dragonplayer
+%defattr(-,root,root)
+%_kde_bindir/dragon
+%dir %_kde_appsdir/dragonplayer
+%_kde_appsdir/dragonplayer/*
+%_kde_libdir/kde4/dragonpart.so
+%_kde_datadir/applications/kde4/dragonplayer.desktop
+%_kde_datadir/kde4/services/ServiceMenus/dragonplayer_*
+%_kde_datadir/kde4/services/dragonplayer_part.desktop
+%_kde_configdir/dragonplayerrc
+%doc %_kde_docdir/*/*/dragonplayer
 
 #---------------------------------------------
 
@@ -98,6 +124,7 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
 %_kde_datadir/kde4/services/ServiceMenus/audiocd_play.desktop
+%_kde_appsdir/konqsidebartng/virtual_folders/services/audiocd.desktop
 
 #---------------------------------------------
 
@@ -121,16 +148,18 @@ KDE 4 library
 
 #---------------------------------------------
 
-%package -n kde4-kmix
+%package -n kmix
 Summary: %{name} kmix
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
+Obsoletes: kde4-kmix < 3:4.0.68
+Provides: kde4-kmix = %epoch:%version
 
-%description -n kde4-kmix
+%description -n kmix
 %{name} kmix.
 
-%files -n kde4-kmix
+%files -n kmix
 %defattr(-,root,root)
 %_kde_appsdir/kmix
 %_kde_bindir/kmix
@@ -139,21 +168,24 @@ Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
 %_kde_libdir/libkdeinit4_kmix*
+%_kde_autostart/kmix_autostart.desktop
 %_datadir/dbus-1/interfaces/org.kde.KMix.xml
 %_kde_docdir/HTML/*/kmix
 
 #---------------------------------------------
 
-%package -n kde4-kscd
+%package -n kscd
 Summary: %{name} kscd
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
+Obsoletes: kde4-kscd < 3:4.0.68
+Provides: kde4-kscd = %epoch:%version
 
-%description -n kde4-kscd
+%description -n kscd
 %{name} kscd.
 
-%files -n kde4-kscd
+%files -n kscd
 %defattr(-,root,root)
 %_kde_appsdir/profiles
 %_kde_bindir/kscd
