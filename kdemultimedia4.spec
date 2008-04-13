@@ -84,10 +84,13 @@ Provides: kde4-juk = %epoch:%version
 #----------------------------------------------------------------------
 
 %package -n dragonplayer
-Summary: %{name} dragonplayer
-Group: Graphical desktop/KDE
+Summary:   %{name} dragonplayer
+Group:     Graphical desktop/KDE
 Requires:  %name-core = %epoch:%version
-Provides: kde4-dragonplayer = %epoch:%version
+Provides:  kde4-dragonplayer = %epoch:%version
+Obsoletes: kde4-videoplayer <= 1.0.1-0.745290.4
+Provides:  kde4-videoplayer 
+
 
 %description -n dragonplayer
 %{name} dragonplayer.
