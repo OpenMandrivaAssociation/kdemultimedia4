@@ -1,6 +1,6 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.0.68
+Version: 4.0.69
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -27,9 +27,9 @@ BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
-Requires: kde4-juk
-Requires: kde4-kmix
-Requires: kde4-kscd
+Requires: juk
+Requires: kmix
+Requires: kscd
 Obsoletes: kde4-noatun <  3:3.94.0-0.726889.1
 Obsoletes: %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
@@ -87,7 +87,8 @@ Provides: kde4-juk = %epoch:%version
 Summary:   %{name} dragonplayer
 Group:     Graphical desktop/KDE
 Requires:  %name-core = %epoch:%version
-Provides:  kde4-dragonplayer = %epoch:%version
+Obsoletes: dragonplayer <= 2.0.1-1
+Provides:  dragonplayer = %epoch:%version
 Obsoletes: kde4-videoplayer <= 1.0.1-0.745290.4
 Provides:  kde4-videoplayer 
 
