@@ -27,6 +27,7 @@ BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
+BuildRequires: libflac-devel
 Requires: juk
 Requires: kmix
 Requires: kscd
