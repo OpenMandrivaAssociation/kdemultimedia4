@@ -1,13 +1,13 @@
-Name: kdemultimedia4
-Summary: K Desktop Environment
-Version: 4.0.73
-Group: Graphical desktop/KDE
-Epoch: 3
-License: GPL
-URL: http://www.kde.org
-Release: %mkrel 1
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-Buildroot:	%_tmppath/%name-%version-%release-root
+Name:          kdemultimedia4
+Summary:       K Desktop Environment
+Version:       4.0.73
+Group:         Graphical desktop/KDE
+Epoch:         3
+License:       GPL
+URL:           http://www.kde.org
+Release:       %mkrel 2
+Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
@@ -28,11 +28,11 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
-Requires: juk
-Requires: kmix
-Requires: kscd
-Obsoletes: kde4-noatun <  3:3.94.0-0.726889.1
-Obsoletes: %{_lib}noatun5 < 3:3.94.0-0.726889.1
+Requires:      juk = %version
+Requires:      kmix = %version
+Requires:      kscd = %version
+Obsoletes:     kde4-noatun <  3:3.94.0-0.726889.1
+Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
 %description
 %{name} metapackage.
