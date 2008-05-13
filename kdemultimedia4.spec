@@ -143,7 +143,7 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 Summary:    KDE 4 library
 Group:      System/Libraries
 Obsoletes:  %{_lib}audiocdplugins1 < 3:4.0.0-2
-# (Anssi 05/2008) or a while this package was lib4 (in stable releases as well):
+# (Anssi 05/2008) for a while this package was lib4 (in stable releases as well):
 Obsoletes:  %{_lib}4 < 3:4.0.73-3
 
 %description -n %libaudiocdplugins
