@@ -5,7 +5,7 @@ Group:         Graphical desktop/KDE
 Epoch:         3
 License:       GPL
 URL:           http://www.kde.org
-Release:       %mkrel 2
+Release:       %mkrel 3
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -48,6 +48,9 @@ Summary:   %name core files
 Group:     Graphical desktop/KDE
 Requires:  kdelibs4-core
 Conflicts: oxygen-icon-theme <= 1:3.94.0-0.726654.2
+# (Anssi 05/2008): KDE3 before move to /opt/kde3:
+Conflicts: kdemultimedia-kmix < 1:3.5.9-4
+Conflicts: kdemultimedia-kscd < 1:3.5.9-4
 
 %description core
 Core files for %{name}.
