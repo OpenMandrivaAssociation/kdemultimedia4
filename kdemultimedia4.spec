@@ -5,7 +5,7 @@ Group:         Graphical desktop/KDE
 Epoch:         3
 License:       GPL
 URL:           http://www.kde.org
-Release:       %mkrel 3
+Release:       %mkrel 4
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -136,13 +136,15 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 
 #---------------------------------------------
 
-%define libaudiocdplugins %mklibname %audiocdplugins_major
+%define libaudiocdplugins %mklibname audiocdplugins %audiocdplugins_major
 %define  audiocdplugins_major 4
 
 %package -n %libaudiocdplugins
 Summary:    KDE 4 library
 Group:      System/Libraries
-Obsoletes:  %{_lib}audiocdplugins1 < 3:4.0.0-1
+Obsoletes:  %{_lib}audiocdplugins1 < 3:4.0.0-2
+# (Anssi 05/2008) or a while this package was lib4 (in stable releases as well):
+Obsoletes:  %{_lib}4 < 3:4.0.73-3
 
 %description -n %libaudiocdplugins
 KDE 4 library
