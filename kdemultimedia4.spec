@@ -5,7 +5,7 @@ Group:         Graphical desktop/KDE
 Epoch:         3
 License:       GPL
 URL:           http://www.kde.org
-Release:       %mkrel 5
+Release:       %mkrel 6
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -212,6 +212,8 @@ Provides: kde4-kscd = %epoch:%version
 %package -n %libkcddb
 Summary: KDE 4 library
 Group: System/Libraries
+# (Anssi 05/2008): KDE3 before move to /opt/kde3:
+Conflicts: kdemultimedia-kscd < 1:3.5.9-4
 
 %description -n %libkcddb
 KDE 4 library
