@@ -5,7 +5,7 @@ Group:         Graphical desktop/KDE
 Epoch:         3
 License:       GPL
 URL:           http://www.kde.org
-Release:       %mkrel 1
+Release:       %mkrel 2
 Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -28,9 +28,9 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libxcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
-Requires:      juk = %version
-Requires:      kmix = %version
-Requires:      kscd = %version
+Requires:      juk = %epoch:%version
+Requires:      kmix = %epoch:%version
+Requires:      kscd = %epoch:%version
 Obsoletes:     kde4-noatun <  3:3.94.0-0.726889.1
 Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
