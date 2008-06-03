@@ -1,6 +1,6 @@
 Name:          kdemultimedia4
 Summary:       K Desktop Environment
-Version: 4.0.80
+Version: 4.0.81
 Group:         Graphical desktop/KDE
 Epoch:         3
 License:       GPL
