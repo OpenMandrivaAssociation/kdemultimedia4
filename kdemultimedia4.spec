@@ -149,8 +149,12 @@ Obsoletes:  %{_lib}4 < 3:4.0.73-4
 %description -n %libaudiocdplugins
 KDE 4 library
 
+%if %mdkversion < 200900
 %post -n %libaudiocdplugins -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libaudiocdplugins -p /sbin/ldconfig
+%endif
 
 %files -n %libaudiocdplugins
 %defattr(-,root,root)
@@ -218,8 +222,12 @@ Conflicts: kdemultimedia-kscd < 1:3.5.9-4
 %description -n %libkcddb
 KDE 4 library
 
+%if %mdkversion < 200900
 %post -n %libkcddb -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libkcddb -p /sbin/ldconfig
+%endif
 
 %files -n %libkcddb
 %defattr(-,root,root)
@@ -240,8 +248,12 @@ Group: System/Libraries
 %description -n %libkcompactdisc
 KDE 4 library
 
+%if %mdkversion < 200900
 %post -n %libkcompactdisc -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libkcompactdisc -p /sbin/ldconfig
+%endif
 
 %files -n %libkcompactdisc
 %defattr(-,root,root)
