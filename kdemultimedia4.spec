@@ -1,13 +1,13 @@
-Name:          kdemultimedia4
-Summary:       K Desktop Environment
-Version: 4.0.81
-Group:         Graphical desktop/KDE
-Epoch:         3
-License:       GPL
-URL:           http://www.kde.org
+Name: kdemultimedia4
+Summary: K Desktop Environment
+Version: 4.0.82
+Group: Graphical desktop/KDE
+Epoch: 3
+License: GPL
+URL: http://www.kde.org
 Release: %mkrel 1
-Source:	       ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-Buildroot:     %_tmppath/%name-%version-%release-root
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
@@ -48,9 +48,10 @@ Summary:   %name core files
 Group:     Graphical desktop/KDE
 Requires:  kdelibs4-core
 Conflicts: oxygen-icon-theme <= 1:3.94.0-0.726654.2
-# (Anssi 05/2008): KDE3 before move to /opt/kde3:
+%if %mdkversion > 200810
 Conflicts: kdemultimedia-kmix < 1:3.5.9-4
 Conflicts: kdemultimedia-kscd < 1:3.5.9-4
+%endif
 
 %description core
 Core files for %{name}.
@@ -143,8 +144,9 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 Summary:    KDE 4 library
 Group:      System/Libraries
 Obsoletes:  %{_lib}audiocdplugins1 < 3:4.0.0-2
-# (Anssi 05/2008) for a while this package was lib4 (in stable releases as well):
+%if %mdkversion > 200810
 Obsoletes:  %{_lib}4 < 3:4.0.73-4
+%endif
 
 %description -n %libaudiocdplugins
 KDE 4 library
@@ -216,8 +218,9 @@ Provides: kde4-kscd = %epoch:%version
 %package -n %libkcddb
 Summary: KDE 4 library
 Group: System/Libraries
-# (Anssi 05/2008): KDE3 before move to /opt/kde3:
+%if %mdkversion > 200810
 Conflicts: kdemultimedia-kscd < 1:3.5.9-4
+%endif 
 
 %description -n %libkcddb
 KDE 4 library
