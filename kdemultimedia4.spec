@@ -81,9 +81,6 @@ Provides: kde4-juk = %epoch:%version
 %_kde_bindir/juk
 %_kde_datadir/applications/kde4/juk.desktop
 %_kde_datadir/kde4/services/ServiceMenus/jukservicemenu.desktop
-%_datadir/dbus-1/interfaces/org.kde.juk.collection.xml
-%_datadir/dbus-1/interfaces/org.kde.juk.player.xml
-%_datadir/dbus-1/interfaces/org.kde.juk.search.xml
 %_kde_docdir/HTML/*/juk
 
 #----------------------------------------------------------------------
@@ -185,7 +182,6 @@ Provides: kde4-kmix = %epoch:%version
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
 %_kde_libdir/libkdeinit4_kmix*
 %_kde_autostart/kmix_autostart.desktop
-%_datadir/dbus-1/interfaces/org.kde.KMix.xml
 %_kde_docdir/HTML/*/kmix
 
 #---------------------------------------------
@@ -284,6 +280,7 @@ based on %{name}.
 %_kde_libdir/libkcddb.so
 %_kde_libdir/libkcompactdisc.so
 %_kde_includedir/*
+%_kde_datadir/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------
 
