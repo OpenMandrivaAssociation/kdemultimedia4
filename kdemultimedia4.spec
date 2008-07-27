@@ -4,7 +4,7 @@ Version: 4.1.0
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
-URL: http://www.kde.org
+URL: http://multimedia.kde.org/
 Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -64,16 +64,15 @@ Core files for %{name}.
 #----------------------------------------------------------------------
 
 %package -n juk
-Summary:   %{name} juk
+Summary:   A music player and manager for KDE
 Group:     Graphical desktop/KDE
 Requires:  %name-core = %epoch:%version
 Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 Obsoletes: kde4-juk < 3:4.0.68
 Provides: kde4-juk = %epoch:%version
 
-
 %description -n juk
-%{name} juk.
+JuK is a music player and manager for KDE.
 
 %files -n juk
 %defattr(-,root,root)
@@ -86,8 +85,9 @@ Provides: kde4-juk = %epoch:%version
 #----------------------------------------------------------------------
 
 %package -n dragonplayer
-Summary:   %{name} dragonplayer
+Summary:   A simple video player for KDE 4
 Group:     Graphical desktop/KDE
+URL: http://www.dragonplayer.org/
 Requires:  %name-core = %epoch:%version
 Obsoletes: dragonplayer <= 2.0.1-1
 Provides:  dragonplayer = %epoch:%version
@@ -96,7 +96,7 @@ Provides:  kde4-videoplayer
 
 
 %description -n dragonplayer
-%{name} dragonplayer.
+Dragon Player is a simple video player for KDE 4.
 
 %files -n dragonplayer
 %defattr(-,root,root)
@@ -162,7 +162,7 @@ KDE 4 library
 #---------------------------------------------
 
 %package -n kmix
-Summary: %{name} kmix
+Summary: %{name} Digital Mixer
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
@@ -170,7 +170,7 @@ Obsoletes: kde4-kmix < 3:4.0.68
 Provides: kde4-kmix = %epoch:%version
 
 %description -n kmix
-%{name} kmix.
+%{name} Digital Mixer.
 
 %files -n kmix
 %defattr(-,root,root)
@@ -187,7 +187,7 @@ Provides: kde4-kmix = %epoch:%version
 #---------------------------------------------
 
 %package -n kscd
-Summary: %{name} kscd
+Summary: %{name} Audio CD Player
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
@@ -195,7 +195,7 @@ Obsoletes: kde4-kscd < 3:4.0.68
 Provides: kde4-kscd = %epoch:%version
 
 %description -n kscd
-%{name} kscd.
+%{name} audio CD Player.
 
 %files -n kscd
 %defattr(-,root,root)
