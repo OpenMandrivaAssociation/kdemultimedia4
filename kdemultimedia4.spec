@@ -5,7 +5,9 @@ Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 1
+Release: %mkrel 2
+#Patches backported from trunk
+Patch100: kdebase-runtime-backport-kscd.patch
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -204,6 +206,7 @@ Provides: kde4-kscd = %epoch:%version
 %_kde_bindir/workman2cddb.pl
 %_kde_datadir/applications/kde4/kscd.desktop
 %_kde_datadir/config.kcfg/kscd.kcfg
+%_kde_appsdir/kscd
 %_kde_docdir/HTML/*/kscd
 
 #---------------------------------------------
@@ -286,7 +289,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-
+%patch100 -p0 -b .kscd
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
