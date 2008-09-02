@@ -27,7 +27,7 @@ BuildRequires: X11-devel
 BuildRequires: libfreebob-devel
 BuildRequires: alsa-lib-devel
 BuildRequires: libgstreamer-plugins-base-devel
-BuildRequires: libxcb-devel
+BuildRequires: xcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
 Requires:      juk = %epoch:%version
