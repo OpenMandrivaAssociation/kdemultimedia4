@@ -203,7 +203,6 @@ Provides: kde4-kscd = %epoch:%version
 %defattr(-,root,root)
 %_kde_appsdir/profiles
 %_kde_bindir/kscd
-%_kde_bindir/workman2cddb.pl
 %_kde_datadir/applications/kde4/kscd.desktop
 %_kde_datadir/config.kcfg/kscd.kcfg
 %_kde_appsdir/kscd
@@ -289,7 +288,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-#patch100 -p0 -b .kscd
+%patch100 -p0 -b .kscd
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
