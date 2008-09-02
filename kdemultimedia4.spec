@@ -1,11 +1,11 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.0
+Version: 4.1.1
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 2
+Release: %mkrel 1
 #Patches backported from trunk
 Patch100: kdebase-runtime-backport-kscd.patch
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
@@ -289,7 +289,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-%patch100 -p0 -b .kscd
+#patch100 -p0 -b .kscd
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
