@@ -1,6 +1,6 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.1
+Version: 4.1.2
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -17,7 +17,6 @@ BuildRequires: cdparanoia
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
-BuildRequires: libxine-devel >= 1.1.9 
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
@@ -30,6 +29,7 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: xcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
+BuildRequires: libxine-devel
 Requires:      juk = %epoch:%version
 Requires:      kmix = %epoch:%version
 Requires:      kscd = %epoch:%version
