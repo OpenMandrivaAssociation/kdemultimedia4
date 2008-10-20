@@ -5,7 +5,7 @@ Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 1
+Release: %mkrel 2
 Patch1:   kdemultimedia-kmix_keyboard_shortcuts.patch
 #Patches backported from trunk
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
@@ -289,7 +289,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-#%patch1 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
