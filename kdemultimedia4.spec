@@ -1,14 +1,13 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.2
+Version: 4.1.70
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 2
+Release: %mkrel 1
 Patch1:   kdemultimedia-kmix_keyboard_shortcuts.patch
 #Patches backported from trunk
-Patch100: kdebase-runtime-backport-kscd.patch
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -110,6 +109,7 @@ Dragon Player is a simple video player for KDE 4.
 %_kde_datadir/applications/kde4/dragonplayer.desktop
 %_kde_datadir/kde4/services/ServiceMenus/dragonplayer_*
 %_kde_datadir/kde4/services/dragonplayer_part.desktop
+%_kde_appsdir/solid/actions/dragonplayer-opendvd.desktop
 %_kde_configdir/dragonplayerrc
 %doc %_kde_docdir/*/*/dragonplayer
 
@@ -289,8 +289,8 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-%patch1 -p1
-%patch100 -p0 -b .kscd
+#%patch1 -p1
+
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
