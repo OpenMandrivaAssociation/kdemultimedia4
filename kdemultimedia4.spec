@@ -1,11 +1,11 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.70
+Version: 4.1.71
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 2
+Release: %mkrel 1
 Patch1:   kdemultimedia-kmix_keyboard_shortcuts.patch
 #Patches backported from trunk
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
