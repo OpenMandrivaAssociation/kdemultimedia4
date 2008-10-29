@@ -5,7 +5,7 @@ Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 2
+Release: %mkrel 3
 Patch1:   kdemultimedia-kmix_keyboard_shortcuts.patch
 #Patches backported from trunk
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
@@ -306,7 +306,7 @@ cd build
 make DESTDIR=%buildroot install
 
 # fwang: it conflicts with oxygen-icon-theme (see kde bug#151419)
-rm -f %buildroot/%_kde_iconsdir/oxygen/22x22/actions/kscd-dock.png
+#rm -f %buildroot/%_kde_iconsdir/oxygen/22x22/actions/kscd-dock.png
 
 %clean
 rm -fr %buildroot
