@@ -305,9 +305,6 @@ cd build
 
 make DESTDIR=%buildroot install
 
-# fwang: it conflicts with oxygen-icon-theme (see kde bug#151419)
-#rm -f %buildroot/%_kde_iconsdir/oxygen/22x22/actions/kscd-dock.png
-
 %clean
 rm -fr %buildroot
 
