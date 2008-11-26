@@ -5,7 +5,7 @@ Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 1
+Release: %mkrel 2
 #Patches backported from trunk
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -47,12 +47,15 @@ Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
 %package   core
 Summary:   %name core files
 Group:     Graphical desktop/KDE
-Requires:  kdelibs4-core
+
+Requires:  kdebase4-runtime
+
 Conflicts: oxygen-icon-theme <= 1:3.94.0-0.726654.2
-%if %mdkversion > 200810
-Conflicts: kdemultimedia-kmix < 1:3.5.9-4
-Conflicts: kdemultimedia-kscd < 1:3.5.9-4
-%endif
+
+Obsoletes: kdemultimedia-common < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-common < 1:3.5.10-2
+Obsoletes: kdemultimedia-krec < 1:3.5.10-2
+Obsoletes: kdemultimedia-kmid < 1:3.5.10-2
 
 %description core
 Core files for %{name}.
@@ -71,6 +74,12 @@ Requires:  %name-core = %epoch:%version
 Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 Obsoletes: kde4-juk < 3:4.0.68
 Provides: kde4-juk = %epoch:%version
+Obsoletes: kdemultimedia-juk < 1:3.5.10-2
+Obsoletes: kdemultimedia-kaboodle < 1:3.5.10-2
+Obsoletes: kdemultimedia-arts < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-arts < 1:3.5.10-2
+Obsoletes: kdemultimedia-noatun < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-noatun < 1:3.5.10-2
 
 %description -n juk
 JuK is a music player and manager for KDE.
@@ -167,8 +176,11 @@ KDE 4 library
 Summary: %{name} Digital Mixer
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
+
 Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 Obsoletes: kde4-kmix < 3:4.0.68
+Obsoletes: kdemultimedia-kmix < 1:3.5.10-2
+
 Provides: kde4-kmix = %epoch:%version
 
 %description -n kmix
@@ -192,8 +204,11 @@ Provides: kde4-kmix = %epoch:%version
 Summary: %{name} Audio CD Player
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
+
 Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
 Obsoletes: kde4-kscd < 3:4.0.68
+Obsoletes: kdemultimedia-kscd < 1:3.5.10-2
+
 Provides: kde4-kscd = %epoch:%version
 
 %description -n kscd
@@ -265,7 +280,11 @@ KDE 4 library
 %package devel
 Summary: Devel stuff for %{name}
 Group: Development/KDE and Qt
-Requires: kde4-macros
+
+Obsoletes: %{_lib}kdemultimedia1-common-devel < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-arts-devel < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-noatun-devel < 1:3.5.10-2
+
 Requires: kdelibs4-devel
 Requires: %libaudiocdplugins = %epoch:%version
 Requires: %libkcddb = %epoch:%version
