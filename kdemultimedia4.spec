@@ -1,11 +1,11 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.80
+Version: 4.1.81
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
 URL: http://multimedia.kde.org/
-Release: %mkrel 2
+Release: %mkrel 1
 #Patches backported from trunk
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Buildroot: %_tmppath/%name-%version-%release-root
