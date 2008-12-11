@@ -1,6 +1,6 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.1.81
+Version: 4.1.82
 Group: Graphical desktop/KDE
 Epoch: 3
 License: GPL
@@ -119,6 +119,7 @@ Dragon Player is a simple video player for KDE 4.
 %_kde_datadir/kde4/services/dragonplayer_part.desktop
 %_kde_appsdir/solid/actions/dragonplayer-opendvd.desktop
 %_kde_configdir/dragonplayerrc
+%doc %_kde_docdir/HTML/en/dragonplayer
 
 #---------------------------------------------
 
