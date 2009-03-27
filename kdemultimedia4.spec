@@ -1,5 +1,3 @@
-%define subrel 1
-
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.2.2
