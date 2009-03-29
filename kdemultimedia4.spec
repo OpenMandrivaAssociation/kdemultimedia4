@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.2.2
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -155,19 +155,10 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 Summary:    KDE 4 library
 Group:      System/Libraries
 Obsoletes:  %{_lib}audiocdplugins1 < 3:4.0.0-2
-%if %mdkversion > 200810
 Obsoletes:  %{_lib}4 < 3:4.0.73-4
-%endif
 
 %description -n %libaudiocdplugins
 KDE 4 library
-
-%if %mdkversion < 200900
-%post -n %libaudiocdplugins -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libaudiocdplugins -p /sbin/ldconfig
-%endif
 
 %files -n %libaudiocdplugins
 %defattr(-,root,root)
@@ -224,6 +215,7 @@ Provides: kde4-kscd = %epoch:%version
 %_kde_datadir/applications/kde4/kscd.desktop
 %_kde_datadir/config.kcfg/kscd.kcfg
 %_kde_appsdir/kscd
+%_kde_appsdir/solid/actions/kscd-play-audiocd.desktop
 %_kde_docdir/HTML/*/kscd
 
 #---------------------------------------------
@@ -234,19 +226,10 @@ Provides: kde4-kscd = %epoch:%version
 %package -n %libkcddb
 Summary: KDE 4 library
 Group: System/Libraries
-%if %mdkversion > 200810
-Conflicts: kdemultimedia-kscd < 1:3.5.9-4
-%endif 
+Obsoletes: kdemultimedia-kscd < 1:3.5.10-4
 
 %description -n %libkcddb
 KDE 4 library
-
-%if %mdkversion < 200900
-%post -n %libkcddb -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcddb -p /sbin/ldconfig
-%endif
 
 %files -n %libkcddb
 %defattr(-,root,root)
@@ -266,13 +249,6 @@ Group: System/Libraries
 
 %description -n %libkcompactdisc
 KDE 4 library
-
-%if %mdkversion < 200900
-%post -n %libkcompactdisc -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcompactdisc -p /sbin/ldconfig
-%endif
 
 %files -n %libkcompactdisc
 %defattr(-,root,root)
