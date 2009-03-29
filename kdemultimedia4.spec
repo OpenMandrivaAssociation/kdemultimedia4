@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.2.2
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -287,7 +287,7 @@ based on %{name}.
 %prep
 %setup -q -n kdemultimedia-%version
 %patch0 -p0
-%patch1 -p1
+%patch1 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
