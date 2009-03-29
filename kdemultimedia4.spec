@@ -142,7 +142,6 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %_kde_datadir/config.kcfg/audiocd_*
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
-%_kde_datadir/kde4/services/ServiceMenus/audiocd_play.desktop
 %_kde_appsdir/konqsidebartng/virtual_folders/services/audiocd.desktop
 %_kde_docdir/HTML/en/kioslave/audiocd
 
