@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.2.2
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -203,6 +203,7 @@ Obsoletes: kde4-kscd < 3:4.0.68
 Obsoletes: kdemultimedia-kscd < 1:3.5.10-2
 
 Provides: kde4-kscd = %epoch:%version
+Suggests: gstreamer0.10-cdparanoia 
 
 %description -n kscd
 %{name} audio CD Player.
