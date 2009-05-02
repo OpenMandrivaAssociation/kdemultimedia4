@@ -1,14 +1,15 @@
+%define kderevision svn954171
+
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.2
-Release: %mkrel 6
+Version: 4.2.70
+Release: %mkrel 0.%kderevision.1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%kderevision.tar.bz2
 Patch0:        kdemultimedia-4.2.2-disable-kmix-autostart.patch
-Patch1:        kdemultimedia-4.2.2-solid-audioCD.patch
 #Patches backported from trunk
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -285,9 +286,8 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdemultimedia-%version
+%setup -q -n kdemultimedia-%version.%kderevision
 %patch0 -p0
-%patch1 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
