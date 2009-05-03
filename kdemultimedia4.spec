@@ -1,8 +1,8 @@
-%define kderevision svn954171
+%define kderevision svn961800
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.70
+Version: 4.2.71
 Release: %mkrel 0.%kderevision.1
 Epoch: 3
 Group: Graphical desktop/KDE
