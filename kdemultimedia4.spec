@@ -2,13 +2,13 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.71
-Release: %mkrel 0.%kderevision.1
+Version: 4.2.85
+Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.%kderevision.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Patch0:        kdemultimedia-4.2.2-disable-kmix-autostart.patch
 #Patches backported from trunk
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -286,7 +286,7 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdemultimedia-%version.%kderevision
+%setup -q -n kdemultimedia-%version
 %patch0 -p0
 
 %build
