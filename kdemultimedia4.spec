@@ -9,7 +9,6 @@ Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-Patch0:        kdemultimedia-4.2.2-disable-kmix-autostart.patch
 #Patches backported from trunk
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -287,7 +286,6 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
-%patch0 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
