@@ -10,6 +10,8 @@ License: GPL
 URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 #Patches backported from trunk
+Patch100: kdemultimedia-4.2.85-t964867-disable-mplayerthumbs.patch
+Patch101: kdemultimedia-4.2.85-t964873-fix-mplayerthumbs.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
@@ -218,6 +220,34 @@ Suggests: gstreamer0.10-cdparanoia
 %_kde_appsdir/solid/actions/kscd-play-audiocd.desktop
 %_kde_docdir/HTML/*/kscd
 
+
+#---------------------------------------------
+
+%package -n mplayerthumbs
+Summary: %{name} Video thumbnail generator for KDE4 file managers
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+
+Requires:      mplayer
+
+%description -n mplayerthumbs
+MPlayerThumbs is a video thumbnail generator for KDE file managers
+(Konqueror, Dolphin, ...) , now available also for KDE 4.
+It needs mplayer (of course) to generate thumbnails, and it contains
+no linking to any library, so in a x86_64 system you can freely use the
+32bit mplayer binary with win32codecs by configuring the application launching
+the mplayerthumbsconfig helper application.
+It catches a random frame from 15% to 70%, checking also how contrasted is the
+image, and dropping bad frames.
+
+%files -n mplayerthumbs
+%defattr(-,root,root)
+%{_kde_bindir}/mplayerthumbsconfig
+%{_kde_libdir}/kde4/videopreview.so
+%{_kde_appsdir}/videothumbnail
+%{_kde_datadir}/config.kcfg/mplayerthumbs.kcfg
+%{_kde_datadir}/kde4/services/videopreview.desktop
+
 #---------------------------------------------
 
 %define libkcddb %mklibname kcddb %kcddb_major
@@ -286,6 +316,8 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
+%patch100 -p0
+%patch101 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
