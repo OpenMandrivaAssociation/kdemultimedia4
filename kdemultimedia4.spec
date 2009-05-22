@@ -1,17 +1,24 @@
-%define kderevision svn961800
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
+%if %branch
+%define kderevision svn969966
+%endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.85
+Version: 4.2.87
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
+%if %branch
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kderevision.tar.bz2
+%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+%endif
 #Patches backported from trunk
-Patch100: kdemultimedia-4.2.85-t964867-disable-mplayerthumbs.patch
-Patch101: kdemultimedia-4.2.85-t964873-fix-mplayerthumbs.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdebase4-devel
@@ -315,9 +322,11 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
+%if %branch
+%setup -q -n kdemultimedia-%version%kderevision
+%else
 %setup -q -n kdemultimedia-%version
-%patch100 -p0
-%patch101 -p0
+%endif
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
