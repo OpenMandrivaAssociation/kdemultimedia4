@@ -2,12 +2,12 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kderevision svn969966
+%define kderevision svn973768
 %endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.87
+Version: 4.2.88
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
