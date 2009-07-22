@@ -114,7 +114,8 @@ Obsoletes: dragonplayer <= 2.0.1-1
 Provides:  dragonplayer = %epoch:%version
 Obsoletes: kde4-videoplayer <= 1.0.1-0.745290.4
 Provides:  kde4-videoplayer 
-
+Obsoletes: codeine < 1.0.1-3
+Provides:  codeine = %epoch:%version-%release
 
 %description -n dragonplayer
 Dragon Player is a simple video player for KDE 4.
