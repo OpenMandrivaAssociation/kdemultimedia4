@@ -1,26 +1,15 @@
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define kderevision svn973768
-%endif
-
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.2.96
+Version: 4.2.98
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-%if %branch
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kderevision.tar.bz2
-%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-%endif
-#Patches backported from trunk
 Buildroot: %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel
+BuildRequires: kdelibs4-devel >= 2:4.2.98
+BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
@@ -297,12 +286,11 @@ KDE 4 library
 %package devel
 Summary: Devel stuff for %{name}
 Group: Development/KDE and Qt
-
 Obsoletes: %{_lib}kdemultimedia1-common-devel < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-arts-devel < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-noatun-devel < 1:3.5.10-2
-
-Requires: kdelibs4-devel
+Requires: kdelibs4-devel >= 2:4.2.98
+Requires: kdelibs4-experimental-devel >= 2:4.2.98
 Requires: %libaudiocdplugins = %epoch:%version
 Requires: %libkcddb = %epoch:%version
 Requires: %libkcompactdisc = %epoch:%version
@@ -323,11 +311,7 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
-%if %branch
-%setup -q -n kdemultimedia-%version%kderevision
-%else
 %setup -q -n kdemultimedia-%version
-%endif
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
