@@ -1,3 +1,5 @@
+%define subrel 1
+ 
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.3.1
@@ -13,6 +15,7 @@ BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
+BuildRequires: phonon-devel >= 2:4.3.50
 BuildRequires: musicbrainz-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
@@ -225,7 +228,8 @@ Summary: %{name} Video thumbnail generator for KDE4 file managers
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 
-Requires:      mplayer
+# We do not requires mplayer as by default we now use the phonon engine
+# Requires:      mplayer
 
 %description -n mplayerthumbs
 MPlayerThumbs is a video thumbnail generator for KDE file managers
@@ -317,7 +321,7 @@ based on %{name}.
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
 
-%cmake_kde4 
+%cmake_kde4 -DENABLE_PHONON_SUPPORT=ON
 
 %make
 
