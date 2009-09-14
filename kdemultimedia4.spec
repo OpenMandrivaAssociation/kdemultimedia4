@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.3.1
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -28,7 +28,7 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: xcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
-BuildRequires: libxine-devel
+BuildConflicts: libxine-devel
 Requires:      juk = %epoch:%version
 Requires:      kmix = %epoch:%version
 Requires:      kscd = %epoch:%version
