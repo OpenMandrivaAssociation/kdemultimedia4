@@ -1,12 +1,13 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.3.1
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -314,6 +315,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
+%patch0 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
