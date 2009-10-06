@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.3.1
-Release: %mkrel 4
+Version: 4.3.2
+Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
