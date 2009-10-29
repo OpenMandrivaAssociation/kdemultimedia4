@@ -1,13 +1,14 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.3.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
+Patch200:      kdemultimedia-4.3.2-b1042067-fix-juk-crash.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -316,7 +317,7 @@ based on %{name}.
 %prep
 %setup -q -n kdemultimedia-%version
 %patch0 -p0
-
+%patch200 -p0
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
