@@ -1,17 +1,17 @@
+%define kde_snapshot svn1040395
+
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.3.2
-Release: %mkrel 2
+Version: 4.3.73
+Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde_snapshot.tar.bz2
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
-Patch200:      kdemultimedia-4.3.2-b1042067-fix-juk-crash.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
-BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
@@ -145,6 +145,7 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
 %_kde_appsdir/konqsidebartng/virtual_folders/services/audiocd.desktop
+%_kde_appsdir/solid/actions/solid_audiocd.desktop
 %_kde_docdir/HTML/en/kioslave/audiocd
 
 #---------------------------------------------
@@ -294,7 +295,6 @@ Obsoletes: %{_lib}kdemultimedia1-common-devel < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-arts-devel < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-noatun-devel < 1:3.5.10-2
 Requires: kdelibs4-devel >= 2:4.2.98
-Requires: kdelibs4-experimental-devel >= 2:4.2.98
 Requires: %libaudiocdplugins = %epoch:%version
 Requires: %libkcddb = %epoch:%version
 Requires: %libkcompactdisc = %epoch:%version
@@ -315,9 +315,9 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdemultimedia-%version
+%setup -q -n kdemultimedia-%version%kde_snapshot
 %patch0 -p0
-%patch200 -p0
+
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
