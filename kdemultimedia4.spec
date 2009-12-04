@@ -42,6 +42,7 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: xcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
+# We want all audio through phonon and not Xine itself
 BuildConflicts: libxine-devel
 Requires:      juk = %epoch:%version
 Requires:      kmix = %epoch:%version
