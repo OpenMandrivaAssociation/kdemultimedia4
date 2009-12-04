@@ -20,7 +20,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
-Patch1:        kdemultimedia-4.3.2-testing-juk-fix-shutdown-crash.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
@@ -335,7 +334,7 @@ based on %{name}.
 %endif
 
 %patch0 -p0
-%patch1 -p0
+
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
