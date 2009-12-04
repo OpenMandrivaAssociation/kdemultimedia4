@@ -1,4 +1,4 @@
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 
@@ -8,7 +8,7 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.3.77
+Version: 4.3.80
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
