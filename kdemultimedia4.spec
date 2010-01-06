@@ -9,7 +9,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.3.85
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -20,6 +20,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
+Patch1:        kmix-pulse.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
@@ -334,6 +335,7 @@ based on %{name}.
 %endif
 
 %patch0 -p0
+%patch1 -p1
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
