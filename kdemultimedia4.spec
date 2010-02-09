@@ -8,7 +8,7 @@
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.3.98
+Version: 4.4.0
 Release: %mkrel 4
 Epoch: 3
 Group: Graphical desktop/KDE
