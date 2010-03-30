@@ -79,6 +79,7 @@ Core files for %{name}.
 %defattr(-,root,root)
 %_kde_iconsdir/*/*/*/*
 %_kde_appsdir/kconf_update/*
+%_kde_docdir/HTML/en/kcontrol/cddbretrieval
 
 #----------------------------------------------------------------------
 
@@ -231,7 +232,6 @@ Suggests: gstreamer0.10-cdparanoia
 %_kde_datadir/config.kcfg/kscd.kcfg
 %_kde_appsdir/kscd
 %_kde_appsdir/solid/actions/kscd-play-audiocd.desktop
-%_kde_docdir/HTML/*/kscd
 
 
 #---------------------------------------------
