@@ -273,7 +273,7 @@ Requires: %name-core = %epoch:%version
 
 Requires:      ffmpeg
 
-%description -n mplayerthumbs
+%description -n ffmpegthumbs
 MPlayerThumbs is a video thumbnail generator for KDE file managers
 (Konqueror, Dolphin, ...) , now available also for KDE 4.
 
