@@ -280,7 +280,7 @@ MPlayerThumbs is a video thumbnail generator for KDE file managers
 %files -n ffmpegthumbs
 %defattr(-,root,root)
 %{_kde_libdir}/kde4/ffmpegthumbs.so
-%{_kde_datadir}/services/ffmpegthumbs.desktop
+%{_kde_datadir}/kde4/services/ffmpegthumbs.desktop
 
 #---------------------------------------------
 
