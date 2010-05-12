@@ -9,7 +9,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.4.3
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -21,6 +21,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar
 %endif
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
 Patch1:        kmix-pulse.patch
+Patch300:      ffmpegthumbs4.diff
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdebase4-devel
@@ -42,6 +43,7 @@ BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: xcb-devel
 BuildRequires: libtaglib-devel
 BuildRequires: libflac-devel
+BuildRequires: ffmpeg-devel 
 # We want all audio through phonon and not Xine itself
 BuildConflicts: libxine-devel
 Requires:      juk = %epoch:%version
@@ -264,6 +266,24 @@ image, and dropping bad frames.
 
 #---------------------------------------------
 
+%package -n ffmpegthumbs
+Summary: %{name} Video thumbnail generator for KDE4 file managers
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+
+Requires:      ffmpeg
+
+%description -n mplayerthumbs
+MPlayerThumbs is a video thumbnail generator for KDE file managers
+(Konqueror, Dolphin, ...) , now available also for KDE 4.
+
+%files -n ffmpegthumbs
+%defattr(-,root,root)
+%{_kde_libdir}/kde4/ffmpegthumbs.so
+%{_kde_datadir}/services/ffmpegthumbs.desktop
+
+#---------------------------------------------
+
 %define libkcddb %mklibname kcddb %kcddb_major
 %define  kcddb_major 4
 
@@ -336,6 +356,7 @@ based on %{name}.
 
 %patch0 -p0
 %patch1 -p1
+%patch300 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
