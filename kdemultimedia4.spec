@@ -23,7 +23,7 @@ Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
 Patch1:        kmix-pulse.patch
 Patch300:      ffmpegthumbs4.diff
 Buildroot: %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel >= 2:4.2.98
+BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
