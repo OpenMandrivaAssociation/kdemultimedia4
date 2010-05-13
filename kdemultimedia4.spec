@@ -9,7 +9,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.4.3
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -274,8 +274,12 @@ Requires: %name-core = %epoch:%version
 Requires:      ffmpeg
 
 %description -n ffmpegthumbs
-MPlayerThumbs is a video thumbnail generator for KDE file managers
-(Konqueror, Dolphin, ...) , now available also for KDE 4.
+FFmpegThumbs is a video thumbnails implementation for KDE4 based on
+FFmpegThumbnailer. 
+This thumbnailer uses FFmpeg to decode frames from the video files, 
+so supported video formats depend on the configuration flags of ffmpeg.
+
+This thumbnailer was designed to be as fast and lightweight as possible.
 
 %files -n ffmpegthumbs
 %defattr(-,root,root)
