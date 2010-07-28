@@ -3,13 +3,13 @@
 
 
 %if %branch
-%define kde_snapshot svn1053190
+%define kde_snapshot svn1138650
 %endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.4.3
-Release: %mkrel 7
+Version: 4.4.95
+Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -20,9 +20,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
 Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
-Patch1:        kmix-pulse.patch
-Patch300:      ffmpegthumbs4.diff
-Patch301:      ffmpegthumbs4-fix-encoding.diff
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: kdebase4-devel
@@ -229,7 +226,7 @@ Suggests: gstreamer0.10-cdparanoia
 
 %files -n kscd
 %defattr(-,root,root)
-%_kde_appsdir/profiles
+#%_kde_appsdir/profiles
 %_kde_bindir/kscd
 %_kde_datadir/applications/kde4/kscd.desktop
 %_kde_datadir/config.kcfg/kscd.kcfg
@@ -360,9 +357,6 @@ based on %{name}.
 %endif
 
 %patch0 -p0
-%patch1 -p1
-%patch300 -p0
-%patch301 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
