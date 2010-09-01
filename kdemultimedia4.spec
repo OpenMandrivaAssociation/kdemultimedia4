@@ -1,14 +1,14 @@
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
 
 %if %branch
-%define kde_snapshot svn1138650
+%define kde_snapshot svn1165394
 %endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.5.0
+Version: 4.5.65
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
@@ -19,7 +19,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
-Patch0:        kdemultimedia-4.3.1-kscd-allow-more-cd.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: kdebase4-devel
@@ -355,8 +354,6 @@ based on %{name}.
 %else
 %setup -q -n kdemultimedia-%version
 %endif
-
-%patch0 -p0
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
