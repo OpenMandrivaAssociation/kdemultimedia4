@@ -25,7 +25,7 @@ BuildRequires: kdebase4-devel
 BuildRequires: kdebase4-workspace-devel
 BuildRequires: cdparanoia 
 BuildRequires: phonon-devel >= 2:4.3.50
-BuildRequires: musicbrainz3-devel
+BuildRequires: libmusicbrainz3-devel
 BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
 BuildRequires: libtunepimp-devel 
