@@ -1,21 +1,20 @@
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
-
 %if %branch
-%define kde_snapshot svn1170578
+%define kde_snapshot svn1174542
 %endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.5.67
+Version: 4.5.68
 Release: %mkrel 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
 %if %branch
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version%kde_snapshot.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdemultimedia-%version%kde_snapshot.tar.bz2
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
 %endif
@@ -203,6 +202,8 @@ Provides: kde4-kmix = %epoch:%version
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
 %_kde_libdir/libkdeinit4_kmix*
+%_kde_libdir/kde4/kded_kmixd.so
+%_kde_services/kded/kmixd.desktop
 %_kde_autostart/kmix_autostart.desktop
 %_kde_docdir/HTML/*/kmix
 
@@ -358,16 +359,13 @@ based on %{name}.
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
-
 %cmake_kde4 -DENABLE_PHONON_SUPPORT=ON
 
 %make
 
 %install
 rm -fr %buildroot
-cd build
-
-make DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean
 rm -fr %buildroot
