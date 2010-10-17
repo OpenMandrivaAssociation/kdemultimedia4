@@ -47,6 +47,7 @@ Obsoletes: kdemultimedia-common < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-common < 1:3.5.10-2
 Obsoletes: kdemultimedia-krec < 1:3.5.10-2
 Obsoletes: kdemultimedia-kmid < 1:3.5.10-2
+Obsoletes: %name-core < 3:4.5.71
 
 %description
 %{name} metapackage.
