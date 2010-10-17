@@ -2,13 +2,17 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1174542
+%define kde_snapshot svn1186163
 %endif
 
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.5.68
+Version: 4.5.71
+%if %branch
+Release: %mkrel -c %kde_snapshot 1
+%else
 Release: %mkrel 1
+%endif
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -20,26 +24,18 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar
 %endif
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
-BuildRequires: kdebase4-devel
-BuildRequires: kdebase4-workspace-devel
-BuildRequires: cdparanoia 
 BuildRequires: phonon-devel >= 2:4.3.50
 BuildRequires: libmusicbrainz3-devel
-BuildRequires: mad-devel 
 BuildRequires: oggvorbis-devel
+BuildRequires: ffmpeg-devel
+BuildRequires: libflac-devel
+BuildRequires: taglib-devel
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
-BuildRequires: libspeex-devel
-BuildRequires: libsamplerate-devel
-BuildRequires: X11-devel
-BuildRequires: libfreebob-devel
 BuildRequires: alsa-lib-devel
-BuildRequires: libgstreamer-plugins-base-devel
-BuildRequires: xcb-devel
-BuildRequires: libtaglib-devel
-BuildRequires: libflac-devel
 BuildRequires: ffmpeg-devel 
+BuildRequires: pulseaudio-devel
 # We want all audio through phonon and not Xine itself
 BuildConflicts: libxine-devel
 Requires:      juk = %epoch:%version
@@ -47,6 +43,10 @@ Requires:      kmix = %epoch:%version
 Requires:      kscd = %epoch:%version
 Obsoletes:     kde4-noatun <  3:3.94.0-0.726889.1
 Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
+Obsoletes: kdemultimedia-common < 1:3.5.10-2
+Obsoletes: %{_lib}kdemultimedia1-common < 1:3.5.10-2
+Obsoletes: kdemultimedia-krec < 1:3.5.10-2
+Obsoletes: kdemultimedia-kmid < 1:3.5.10-2
 
 %description
 %{name} metapackage.
@@ -57,34 +57,10 @@ Obsoletes:     %{_lib}noatun5 < 3:3.94.0-0.726889.1
 
 #----------------------------------------------------------------------
 
-%package   core
-Summary:   %name core files
-Group:     Graphical desktop/KDE
-
-Requires:  kdebase4-runtime
-
-Conflicts: oxygen-icon-theme <= 1:3.94.0-0.726654.2
-
-Obsoletes: kdemultimedia-common < 1:3.5.10-2
-Obsoletes: %{_lib}kdemultimedia1-common < 1:3.5.10-2
-Obsoletes: kdemultimedia-krec < 1:3.5.10-2
-Obsoletes: kdemultimedia-kmid < 1:3.5.10-2
-
-%description core
-Core files for %{name}.
-
-%files core
-%defattr(-,root,root)
-%_kde_iconsdir/*/*/*/*
-%_kde_appsdir/kconf_update/*
-%_kde_docdir/HTML/en/kcontrol/cddbretrieval
-
-#----------------------------------------------------------------------
-
 %package -n juk
 Summary:   A music player and manager for KDE
 Group:     Graphical desktop/KDE
-Requires:  %name-core = %epoch:%version
+Conflicts: %name-core < 3:4.5.71
 Obsoletes: %name-juk < 3:3.93.0-0.714637.1
 Obsoletes: kde4-juk < 3:4.0.68
 Provides: kde4-juk = %epoch:%version
@@ -102,6 +78,7 @@ JuK is a music player and manager for KDE.
 %defattr(-,root,root)
 %_kde_appsdir/juk
 %_kde_bindir/juk
+%_kde_iconsdir/*/*/apps/juk.*
 %_kde_datadir/applications/kde4/juk.desktop
 %_kde_datadir/kde4/services/ServiceMenus/jukservicemenu.desktop
 %_kde_docdir/HTML/*/juk
@@ -112,7 +89,7 @@ JuK is a music player and manager for KDE.
 Summary:   A simple video player for KDE 4
 Group:     Graphical desktop/KDE
 URL: http://www.dragonplayer.org/
-Requires:  %name-core = %epoch:%version
+Conflicts: %name-core < 3:4.5.71
 Obsoletes: dragonplayer <= 2.0.1-1
 Provides:  dragonplayer = %epoch:%version
 Obsoletes: kde4-videoplayer <= 1.0.1-0.745290.4
@@ -128,6 +105,7 @@ Dragon Player is a simple video player for KDE 4.
 %_kde_bindir/dragon
 %dir %_kde_appsdir/dragonplayer
 %_kde_appsdir/dragonplayer/*
+%_kde_iconsdir/*/*/apps/dragonplayer.*
 %_kde_libdir/kde4/dragonpart.so
 %_kde_datadir/applications/kde4/dragonplayer.desktop
 %_kde_datadir/kde4/services/ServiceMenus/dragonplayer_*
@@ -141,8 +119,8 @@ Dragon Player is a simple video player for KDE 4.
 %package -n kde4-audiocd
 Summary: %{name} audiocd
 Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
 Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
+Conflicts: %name-core < 3:4.5.71
 
 %description -n kde4-audiocd
 %{name} audiocd.
@@ -155,9 +133,13 @@ Obsoletes: %name-audiocd < 3:3.93.0-0.714637.1
 %_kde_datadir/config.kcfg/audiocd_*
 %_kde_datadir/kde4/services/audiocd.desktop
 %_kde_datadir/kde4/services/audiocd.protocol
+%_kde_appsdir/kconf_update/audiocd.upd
+%_kde_appsdir/kconf_update/kcmcddb-emailsettings.upd
+%_kde_appsdir/kconf_update/upgrade-metadata.sh
 %_kde_appsdir/konqsidebartng/virtual_folders/services/audiocd.desktop
 %_kde_appsdir/solid/actions/solid_audiocd.desktop
 %_kde_docdir/HTML/en/kioslave/audiocd
+%_kde_docdir/HTML/en/kcontrol/cddbretrieval
 
 #---------------------------------------------
 
@@ -182,7 +164,7 @@ KDE 4 library
 %package -n kmix
 Summary: %{name} Digital Mixer
 Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
+Conflicts: %name-core < 3:4.5.71
 
 Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 Obsoletes: kde4-kmix < 3:4.0.68
@@ -198,6 +180,8 @@ Provides: kde4-kmix = %epoch:%version
 %_kde_appsdir/kmix
 %_kde_bindir/kmix
 %_kde_bindir/kmixctrl
+%_kde_iconsdir/*/*/apps/kmix.*
+%_kde_iconsdir/*/*/actions/player-volume-muted.*
 %_kde_datadir/applications/kde4/kmix.desktop
 %_kde_datadir/autostart/restore_kmix_volumes.desktop
 %_kde_datadir/kde4/services/kmixctrl_restore.desktop
@@ -212,7 +196,7 @@ Provides: kde4-kmix = %epoch:%version
 %package -n kscd
 Summary: %{name} Audio CD Player
 Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
+Conflicts: %name-core < 3:4.5.71
 
 Obsoletes: %name-kscd < 3:3.93.0-0.714637.1
 Obsoletes: kde4-kscd < 3:4.0.68
@@ -226,20 +210,19 @@ Suggests: gstreamer0.10-cdparanoia
 
 %files -n kscd
 %defattr(-,root,root)
-#%_kde_appsdir/profiles
 %_kde_bindir/kscd
 %_kde_datadir/applications/kde4/kscd.desktop
 %_kde_datadir/config.kcfg/kscd.kcfg
 %_kde_appsdir/kscd
+%_kde_iconsdir/*/*/apps/kscd.*
+%_kde_iconsdir/*/*/*/kscd-dock.*
 %_kde_appsdir/solid/actions/kscd-play-audiocd.desktop
-
 
 #---------------------------------------------
 
 %package -n mplayerthumbs
 Summary: %{name} Video thumbnail generator for KDE4 file managers
 Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
 
 # We do not requires mplayer as by default we now use the phonon engine
 # Requires:      mplayer
@@ -267,7 +250,6 @@ image, and dropping bad frames.
 %package -n ffmpegthumbs
 Summary: %{name} Video thumbnail generator for KDE4 file managers
 Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
 
 Requires:      ffmpeg
 
@@ -332,7 +314,6 @@ Requires: kdelibs4-devel >= 2:4.2.98
 Requires: %libaudiocdplugins = %epoch:%version
 Requires: %libkcddb = %epoch:%version
 Requires: %libkcompactdisc = %epoch:%version
-Requires: kdemultimedia4
 
 %description  devel
 This package contains header files needed if you wish to build applications
