@@ -47,7 +47,6 @@ Obsoletes: kdemultimedia-common < 1:3.5.10-2
 Obsoletes: %{_lib}kdemultimedia1-common < 1:3.5.10-2
 Obsoletes: kdemultimedia-krec < 1:3.5.10-2
 Obsoletes: kdemultimedia-kmid < 1:3.5.10-2
-Obsoletes: %name-core < 3:4.5.71
 
 %description
 %{name} metapackage.
@@ -170,6 +169,7 @@ Conflicts: %name-core < 3:4.5.71
 Obsoletes: %name-kmix < 3:3.93.0-0.714637.1
 Obsoletes: kde4-kmix < 3:4.0.68
 Obsoletes: kdemultimedia-kmix < 1:3.5.10-2
+Obsoletes: %name-core < 3:4.5.71
 
 Provides: kde4-kmix = %epoch:%version
 
