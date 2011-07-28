@@ -1,27 +1,12 @@
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define kde_snapshot svn1198704
-%endif
-
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.6.4
-%if %branch
-Release: 0.%kde_snapshot.1
-%else
-Release: 2
-%endif
+Version: 4.7.40
+Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-%if %branch
-Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdemultimedia-%version%kde_snapshot.tar.bz2
-%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
-%endif
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: phonon-devel >= 2:4.3.50
@@ -331,12 +316,7 @@ based on %{name}.
 #----------------------------------------------------------------------
 
 %prep
-
-%if %branch
-%setup -q -n kdemultimedia-%version%kde_snapshot
-%else
 %setup -q -n kdemultimedia-%version
-%endif
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
@@ -346,9 +326,5 @@ export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
 %make
 
 %install
-rm -fr %buildroot
 %makeinstall_std -C build
-
-%clean
-rm -fr %buildroot
 
