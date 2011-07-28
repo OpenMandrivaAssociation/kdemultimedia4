@@ -176,6 +176,9 @@ Provides: kde4-kmix = %epoch:%version
 %_kde_services/kded/kmixd.desktop
 %_kde_autostart/kmix_autostart.desktop
 %_kde_docdir/HTML/*/kmix
+%_kde_libdir/kde4/plasma_engine_mixer.so
+%_kde_appsdir/plasma/services/mixer.operations
+%_kde_datadir/kde4/services/plasma-engine-mixer.desktop
 
 #---------------------------------------------
 
