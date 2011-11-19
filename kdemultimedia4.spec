@@ -21,8 +21,7 @@ BuildRequires: libcdda-devel
 BuildRequires: alsa-lib-devel
 BuildRequires: ffmpeg-devel 
 BuildRequires: pulseaudio-devel
-# We want all audio through phonon and not Xine itself
-BuildConflicts: libxine-devel
+BuildRequires:  automoc4
 Requires:      juk = %epoch:%version
 Requires:      kmix = %epoch:%version
 Requires:      kscd = %epoch:%version
