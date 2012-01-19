@@ -1,6 +1,6 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.7.97
+Version: 4.8.0
 Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
