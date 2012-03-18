@@ -18,7 +18,7 @@ BuildRequires: taglib-devel
 BuildRequires: libtunepimp-devel 
 BuildRequires: libtheora-devel
 BuildRequires: libcdda-devel
-BuildRequires: alsa-lib-devel
+BuildRequires: pkgconfig(alsa)
 BuildRequires: ffmpeg-devel 
 BuildRequires: pulseaudio-devel
 BuildRequires:  automoc4
