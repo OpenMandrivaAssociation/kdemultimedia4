@@ -1,12 +1,12 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.8.1
+Version: 4.8.2
 Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.xz
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: phonon-devel >= 2:4.3.50
