@@ -1,13 +1,14 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
-Version: 4.8.3
+Version: 4.8.4
 Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.xz
-Buildroot: %_tmppath/%name-%version-%release-root
+Source1000: %name.rpmlintrc
+Patch: ../SOURCES/kdemultimedia-4.8.4-ffmpeg-0.11.patch
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: phonon-devel >= 2:4.3.50
 BuildRequires: libmusicbrainz3-devel
@@ -319,6 +320,7 @@ based on %{name}.
 
 %prep
 %setup -q -n kdemultimedia-%version
+%patch -p1 -b .ffmpeg11~
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
