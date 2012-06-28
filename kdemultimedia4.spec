@@ -325,6 +325,7 @@ based on %{name}.
 %patch1 -p1
 
 %build
+%%setup_compile_flags
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
 export CPPFLAGS="${CPPFLAGS} -DOCAMLIB=%_libdir/ocaml"
 %cmake_kde4 -DENABLE_PHONON_SUPPORT=ON
