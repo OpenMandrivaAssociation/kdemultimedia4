@@ -9,6 +9,7 @@ URL: http://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.xz
 Source1000: %name.rpmlintrc
 Patch: ../SOURCES/kdemultimedia-4.8.4-ffmpeg-0.11.patch
+Patch1: kdemultimedia-4.8.1-fix-cxxflags-for-ffmpegthumb.patch
 BuildRequires: kdelibs4-devel >= 2:4.4.3-7
 BuildRequires: phonon-devel >= 2:4.3.50
 BuildRequires: libmusicbrainz3-devel
@@ -321,6 +322,7 @@ based on %{name}.
 %prep
 %setup -q -n kdemultimedia-%version
 %patch -p1 -b .ffmpeg11~
+%patch1 -p1
 
 %build
 export CFLAGS="${CFLAGS} -DOCAMLIB=%_libdir/ocaml"
