@@ -1,7 +1,7 @@
 Name: kdemultimedia4
 Summary: K Desktop Environment
 Version: 4.8.4
-Release: 1
+Release: 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -258,8 +258,8 @@ This thumbnailer was designed to be as fast and lightweight as possible.
 
 #---------------------------------------------
 
+%define kcddb_major 4
 %define libkcddb %mklibname kcddb %kcddb_major
-%define  kcddb_major 4
 
 %package -n %libkcddb
 Summary: KDE 4 library
