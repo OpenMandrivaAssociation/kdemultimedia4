@@ -129,8 +129,8 @@ Conflicts: %name-core < 3:4.5.71
 
 #---------------------------------------------
 
+%define audiocdplugins_major 4
 %define libaudiocdplugins %mklibname audiocdplugins %audiocdplugins_major
-%define  audiocdplugins_major 4
 
 %package -n %libaudiocdplugins
 Summary:    KDE 4 library
@@ -278,8 +278,8 @@ KDE 4 library
 
 #---------------------------------------------
 
-%define libkcompactdisc %mklibname kcompactdisc %kcompactdisc_major
 %define kcompactdisc_major 4
+%define libkcompactdisc %mklibname kcompactdisc %kcompactdisc_major
 
 %package -n %libkcompactdisc
 Summary: KDE 4 library
