@@ -5,7 +5,7 @@ Release: 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
-URL: http://multimedia.kde.org/
+URL: https://multimedia.kde.org/
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdemultimedia-%version.tar.xz
 Source1000: %name.rpmlintrc
 Patch: ../SOURCES/kdemultimedia-4.8.4-ffmpeg-0.11.patch
@@ -74,7 +74,7 @@ JuK is a music player and manager for KDE.
 %package -n dragonplayer
 Summary:   A simple video player for KDE 4
 Group:     Graphical desktop/KDE
-URL: http://www.dragonplayer.org/
+URL: https://www.dragonplayer.org/
 Conflicts: %name-core < 3:4.5.71
 Obsoletes: dragonplayer <= 2.0.1-1
 Provides:  dragonplayer = %epoch:%version
